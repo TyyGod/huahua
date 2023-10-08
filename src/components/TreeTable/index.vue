@@ -74,8 +74,8 @@
  *      ] 
  * @author LiQingSong
  */
-import scrollbarWidth from 'element-ui/src/utils/scrollbar-width';
-import { debounce } from '@/utlis';
+import scrollbarWidth from 'element-ui/src/utils/scrollbar-width'
+import { debounce } from '@/utlis'
 export default {
     name: 'TreeTable',
     props: {
@@ -103,7 +103,7 @@ export default {
         data: {
             type: Array,
             default: function() {
-                return [];
+                return []
             }
         },
         emptyText: {
@@ -128,13 +128,13 @@ export default {
                     label: 'label',
                     children: 'children',
                     isLeaf: 'leaf'
-                };
+                }
             }
         },
         defaultExpandedKeys: {
             type: Array,
             default: function() {
-                return [];
+                return []
             }
         },
         showCheckbox: {
@@ -148,7 +148,7 @@ export default {
         defaultCheckedKeys: {
             type: Array,
             default: function() {
-                return [];
+                return []
             }
         },
         accordion: {
@@ -172,109 +172,109 @@ export default {
             resizeHandler: null,
             // Tree Table 内容区是否有滚动条
             treeTableContentIsScroll: false
-        };
+        }
     },
     computed: {
         getColumnLen: function () {
-            return this.column.length;
+            return this.column.length
         },
         getOperWidth: function() {
-            return this.operationOpen ? this.operationWidth : 0;
+            return this.operationOpen ? this.operationWidth : 0
         },
         getTreeTableWidth: function () {
-            return this.treeTableWidth - 2;
+            return this.treeTableWidth - 2
         },
         getTreeTableDelOperWidth: function() {
-            return this.getTreeTableWidth - this.getOperWidth;
+            return this.getTreeTableWidth - this.getOperWidth
         },
         getColumTableWidthDelOperWidth: function(){
-            const _this = this;
-            let columTableWidth = 0;
+            const _this = this
+            let columTableWidth = 0
             for (let index = 0; index < _this.getColumnLen; index++) {
-                let width = _this.column[index]['minWidth'] ? _this.column[index]['minWidth'] : 100;
-                columTableWidth = columTableWidth + width;               
+                let width = _this.column[index]['minWidth'] ? _this.column[index]['minWidth'] : 100
+                columTableWidth = columTableWidth + width               
             }
-            return columTableWidth;
+            return columTableWidth
         },
         getColumTableWidth: function() {
-            return this.getColumTableWidthDelOperWidth + this.getOperWidth;
+            return this.getColumTableWidthDelOperWidth + this.getOperWidth
         },
         getTreeTableTrWidth: function() {
-            return this.getColumTableWidth > this.getTreeTableWidth ? this.getColumTableWidth : this.getTreeTableWidth;
+            return this.getColumTableWidth > this.getTreeTableWidth ? this.getColumTableWidth : this.getTreeTableWidth
         },
         getColumn: function() {
-            const _this = this;
+            const _this = this
             if (_this.getTreeTableWidth < 1) {
-                return false;
+                return false
             }
 
-            let newColum = [];
+            let newColum = []
             for (let index = 0; index < _this.getColumnLen; index++) {
-                const item = _this.column[index];
-                let width = item['minWidth'] ? item['minWidth'] : 100;
-                let actualWidth =  _this.getTreeTableDelOperWidth > _this.getColumTableWidthDelOperWidth ? (_this.getTreeTableDelOperWidth * width / _this.getColumTableWidthDelOperWidth) : width;
+                const item = _this.column[index]
+                let width = item['minWidth'] ? item['minWidth'] : 100
+                let actualWidth =  _this.getTreeTableDelOperWidth > _this.getColumTableWidthDelOperWidth ? (_this.getTreeTableDelOperWidth * width / _this.getColumTableWidthDelOperWidth) : width
                 newColum.push({
                     title: item['title'],
                     label: item['label'],
                     width: actualWidth
-                });             
+                })             
             }
             /* console.log(this.getColumTableWidthDelOperWidth);
             console.log(this.column);
             console.log(this.getTreeTableWidth); */
-            return newColum;
+            return newColum
         },
         getTreeTableContentIsScroll: function() {
-            return this.treeTableContentIsScroll;
+            return this.treeTableContentIsScroll
         },
         getScrollbarWidth: function() {
-            return scrollbarWidth();
+            return scrollbarWidth()
         }    
     },
     methods: {
         initResizeEvent() {
-            window.addEventListener('resize', this.resizeHandler);
+            window.addEventListener('resize', this.resizeHandler)
         },
         setNodeTdWidth(index, node, width) {
             // console.log(index, node, width);
-            return index < 1 ? (width - 24 - (node.level - 1 ) * 18) : width;
+            return index < 1 ? (width - 24 - (node.level - 1 ) * 18) : width
         },
         setTreeTableContentIsScroll() {
             setTimeout(()=>{
-               this.treeTableContentIsScroll = this.$refs.treetablecontent.scrollHeight > this.$refs.treetablecontent.clientHeight;
-            },500);
+               this.treeTableContentIsScroll = this.$refs.treetablecontent.scrollHeight > this.$refs.treetablecontent.clientHeight
+            },500)
         },
         handleNodeClick(data, node , el){
-            this.$emit('node-click', data, node , el);
+            this.$emit('node-click', data, node , el)
         },
         handleNodeExpand (data, node , el) {
-            this.setTreeTableContentIsScroll();
+            this.setTreeTableContentIsScroll()
             setTimeout(()=>{
-                this.resizeHandler();
-            },500);
-            this.$emit('node-expand', data, node , el);
+                this.resizeHandler()
+            },500)
+            this.$emit('node-expand', data, node , el)
         },
         handleNodeCollapse (data, node , el) {
-            this.setTreeTableContentIsScroll();
+            this.setTreeTableContentIsScroll()
             setTimeout(()=>{
-                this.resizeHandler();
-            },500);
-            this.$emit('node-collapse', data, node , el);
+                this.resizeHandler()
+            },500)
+            this.$emit('node-collapse', data, node , el)
         },
         getNode(data) {
-            return this.$refs['el-tree'].getNode(data);
+            return this.$refs['el-tree'].getNode(data)
         },
         remove(data) {
-            return this.$refs['el-tree'].remove(data);
+            return this.$refs['el-tree'].remove(data)
         },
         append(data, parentNode) {
-            return this.$refs['el-tree'].append(data, parentNode);
+            return this.$refs['el-tree'].append(data, parentNode)
         },
         insertBefore(data, refNode) {
-            return this.$refs['el-tree'].insertBefore(data, refNode);
+            return this.$refs['el-tree'].insertBefore(data, refNode)
         },
         insertAfter(data, refNode) {
-            return this.$refs['el-tree'].insertAfter(data, refNode);
+            return this.$refs['el-tree'].insertAfter(data, refNode)
         }/* ,
         renderContent(h, { node, data, store }) {
             return (
@@ -303,18 +303,18 @@ export default {
         */
     },
     mounted() {
-        const _this = this;
+        const _this = this
         _this.resizeHandler = debounce(() => {
             if (_this.$refs.treetable && _this.$refs.treetable.offsetWidth) {
-                _this.treeTableWidth = _this.$refs.treetable.offsetWidth;
+                _this.treeTableWidth = _this.$refs.treetable.offsetWidth
             }
-        }, 100);
-        _this.resizeHandler();
-        _this.initResizeEvent();
+        }, 100)
+        _this.resizeHandler()
+        _this.initResizeEvent()
         // console.log(this.data);
     }
     
-};
+}
 </script>
 <style lang="scss" scoped>
 .tree-table {
@@ -355,11 +355,11 @@ export default {
     .tree-table-content {
         flex: 1;
         overflow: auto;
-        /deep/ .el-tree-node__content {
+        ::v-deep .el-tree-node__content {
                 height: auto;
                 border-bottom: 1px solid #EBEEF5;
             }
-        /deep/ .custom-tree-node {
+        ::v-deep .custom-tree-node {
             flex: 1;
             font-size: 14px;
             display: table-row;

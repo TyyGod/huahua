@@ -28,8 +28,8 @@
 </template>
 <script>
 
-import TuiEditor from '@/components/TuiEditor';
-import TuiEditorViewer from '@/components/TuiEditor/Viewer';
+import TuiEditor from '@/components/TuiEditor'
+import TuiEditorViewer from '@/components/TuiEditor/Viewer'
 export default {
   components: {
     TuiEditor,
@@ -39,7 +39,7 @@ export default {
     return {
       content: '# This is Test.',
       contentHtml: ''
-    };
+    }
   },
   computed: {
   },
@@ -47,12 +47,12 @@ export default {
   },
   methods: {
       getContent() {
-          this.contentHtml = this.$refs.tuieditor.getHtml();
+          this.contentHtml = this.$refs.tuieditor.getHtml()
       },
       imgUpload(fileOrBlob, callback) {
-        var formdata = new FormData();
-        formdata.append('image', fileOrBlob);
-        console.log(formdata, fileOrBlob);
+        var formdata = new FormData()
+        formdata.append('image', fileOrBlob)
+        console.log(formdata, fileOrBlob)
         /* 
         // ajax上传
         request({
@@ -67,10 +67,10 @@ export default {
         }).catch(err => {                       
             console.log(err);
         }); */
-        callback('https://gitee.com/lqsong/public/raw/master/common/Alipay.png','赞助码');
+        callback('https://gitee.com/lqsong/public/raw/master/common/Alipay.png','赞助码')
       }
   },
   mounted() {
   }
-};
+}
 </script>

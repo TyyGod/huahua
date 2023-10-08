@@ -42,7 +42,7 @@
     </div>
 </template>
 <script>
-import TreeTable from '@/components/TreeTable';
+import TreeTable from '@/components/TreeTable'
 export default {
     components: {
         TreeTable
@@ -139,19 +139,19 @@ export default {
                 }
             ]
         
-      };
+      }
     },
     methods: {
         add(level, data) {
-            console.log(level, data);
+            console.log(level, data)
             this.$message({
                 message: '这里可以显示一个弹框表单',
                 type: 'success'
-            });
+            })
         },
         del(data) {
-            console.log(data);
-            const _this = this;
+            console.log(data)
+            const _this = this
             _this.$confirm('是否确认删除?', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
@@ -160,9 +160,9 @@ export default {
                 _this.$message({
                     message: '删除成功',
                     type: 'success'
-                });
-            }).catch(()=>{});
+                })
+            }).catch(()=>{})
         }
     }
-};
+}
 </script>

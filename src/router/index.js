@@ -21,17 +21,17 @@
                                             三级此参数的作用是选中顶级菜单 ，二级此参数的作用是所属某个顶级菜单的下面，两个层级的必须同时填写一致
   }
  */
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
 // 引入Index框架
-import LayoutIndex from '@/layout/Index';
+import LayoutIndex from '@/layout/Index'
 
 // 引入对应模块路由
-import componentRouter from '@/router/modules/component'; // 组件
-import pagesampleRouter from '@/router/modules/pagesample'; // 页面示例
-import chartstatisticRouter from '@/router/modules/chartstatistic'; // 图表统计
+import componentRouter from '@/router/modules/component' // 组件
+import pagesampleRouter from '@/router/modules/pagesample' // 页面示例
+import chartstatisticRouter from '@/router/modules/chartstatistic' // 图表统计
 
 /**
  * 固定路由
@@ -104,7 +104,7 @@ export const constantRoutes = [
   }
 
  
-];
+]
 
 /**
  * 异步路由
@@ -118,7 +118,7 @@ export const asyncRoutes = [
   chartstatisticRouter,
 
   { path: '*', redirect: '/404', hidden: true }
-];
+]
 
 /* 
 // 打印对应链接的权限
@@ -147,14 +147,14 @@ const createRouter = () => new VueRouter({
   scrollBehavior: () => ({ y: 0 }),
   base: process.env.BASE_URL,
   routes: constantRoutes
-});
+})
 
-const router = createRouter();
+const router = createRouter()
 
 // 细节见: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter();
-  router.matcher = newRouter.matcher; // 重置路由
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // 重置路由
 }
 
-export default router;
+export default router

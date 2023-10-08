@@ -156,7 +156,7 @@
     </div>
 </template>
 <script>
-import PageHeader from '@/layout/components/PageHeader';
+import PageHeader from '@/layout/components/PageHeader'
 export default {
     components: {
       PageHeader
@@ -180,7 +180,7 @@ export default {
             name: '王小虎',
             address: '上海市普陀区金沙江路 1516 弄'
           }]
-        };
+        }
     },
     computed: {
         // 基本信息-表格数据
@@ -205,7 +205,7 @@ export default {
                         content2: '某某村'
                     }
                
-            ];
+            ]
         },
         // 退款申请
         twoTableData: function () { 
@@ -229,8 +229,8 @@ export default {
                         content2: '某某村'
                     }
                
-            ];
+            ]
         }
     }
-};
+}
 </script>

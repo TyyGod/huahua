@@ -2,8 +2,8 @@
  * 组件-路由配置
  * @author LiQingSong
  */
-import LayoutIndex from '@/layout/Index';
-import AppMainLayout from '@/layout/components/AppMain';
+import LayoutIndex from '@/layout/Index'
+import AppMainLayout from '@/layout/components/AppMain'
 
 const componentsRouter = {
     path: '/component',
@@ -100,6 +100,6 @@ const componentsRouter = {
         
         
     ]
-};
+}
 
-export default componentsRouter;
+export default componentsRouter
