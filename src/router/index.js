@@ -132,8 +132,23 @@ export const constantRoutes = [
         meta: {
           title: '煤炭行业云'
         }
+      },
+      {
+        path: 'document',
+        name: 'document',
+        component: () => import('@/views/Home/Document.vue'),
+        hidden: true,
+        meta: {
+          title: '文档手册'
+        }
       }
     ]
+  },
+  {
+    path: '/control',
+    name: '/control',
+    component: () => import('@/views/ControlPanel/ControlPanel.vue'),
+    meta: { title: '控制台' }
   },
   {
     path: '/',
