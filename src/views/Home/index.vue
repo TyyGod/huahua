@@ -1,5 +1,4 @@
 <template>
-   
   <el-container class="container">
     <el-header class="home_header">
       <div class="logo">
@@ -11,12 +10,13 @@
           class="el-menu-demo"
           mode="horizontal"
           @select="handleSelect"
-          active-text-color='#AC2807'
-          background-color='#F6F9FB'
+          active-text-color="#AC2807"
+          background-color="#F6F9FB"
           router
-
         >
-          <el-menu-item index="/home/act">首页</el-menu-item>
+          <el-menu-item index="/home/act" id="parent">
+            <span class="state">首页</span>
+          </el-menu-item>
           <el-menu-item index="/home/capability">产品能力</el-menu-item>
 
           <el-menu-item index="/home/solution">解决方案</el-menu-item>
@@ -31,17 +31,30 @@
         <h3>搜索</h3>
       </div>
       <div class="main">
-        <h3>个人</h3>
+        <span @click="skipDocument"> 文档 </span>
+        <span @click="skipControlPanel"> 控制台 </span>
       </div>
     </el-header>
-    <el-main style="height:500px"> 
-      <router-view/>
+    <el-main>
+      <router-view />
     </el-main>
-    <el-footer class="home_footer" style="height:400px">
-        <div class="home_footer_content">
-
-        </div>
+    <el-footer class="home_footer" style="height: 400px">
+      <div class="home_footer_content"></div>
     </el-footer>
+    <el-drawer
+      id="drawer"
+      :visible.sync="drawer"
+      direction="ttb"
+      :before-close="handleClose"
+      :modal="false"
+      :modal-append-to-body="false"
+      :withHeader='false'
+      size="100%"
+    >
+     <div>
+       111
+     </div>
+    </el-drawer>
   </el-container>
 </template>
 
@@ -51,21 +64,70 @@ export default {
   props: {},
   data() {
     return {
-       activeIndex: '/home/act',
+      activeIndex: "",
+      drawer: false,
     };
   },
-  mounted() {},
+  mounted() {
+    let that = this
+    let url = JSON.parse(localStorage.getItem("url")) || "/home/act"
+    this.activeIndex = url
+
+    let parent = document.getElementById("parent");
+    let el_drawer = document.querySelector('.el-drawer')
+    console.log(el_drawer);
+    parent.onmouseenter = function () {
+      that.drawer = true
+    }
+    el_drawer.onmouseleave = function () {
+      that.drawer = false
+    }
+  },
   methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      }
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath)
+      localStorage.setItem("url", JSON.stringify(key))
+      // this.activeIndex = key
+    },
+    handleClose(done) {
+      done()
+      // this.$confirm("确认关闭？")
+      //   .then((_) => {
+      //     done();
+      //   })
+      //   .catch((_) => {});
+    },
+    skipDocument() {
+      this.$router.push("/home/document")
+      this.activeIndex = "/home/act"
+    },
+    skipControlPanel() {
+      this.$router.push("/control")
+    },
+    // up() {
+    //   // let newdrawer = this.drawer
+    //   // let parent = document.getElementById('parent')
+    //   // let a =  parent.onmouseenter = function() {
+    //   //     // console.log('触发')
+    //   //    newdrawer = true
+    //   //    return a
+    //   // }
+    //   // a()
+    //   // this.drawer = newdrawer
+    //   // this.drawer = true
+
+    // },
   },
 };
 </script>
 
 <style lang='less' scoped>
-.container{
-  background: #F6F9FB;
+.container {
+  background: #f6f9fb;
+}
+#drawer{
+  position: absolute;
+  top: 70px;
 }
 .home_header {
   display: flex;
@@ -90,20 +152,38 @@ export default {
   line-height: 50%;
 }
 .main {
+  // line-height: 500px;
   flex-grow: 3;
-  background: yellow;
+  // background: yellow;
   text-align: center;
-  line-height: 50%;
+  line-height: 60px;
+  font-size: 14px;
+  color: rgb(144, 147, 153);
+  span:nth-child(2) {
+    margin-left: 50px;
+  }
+  span:hover {
+    cursor: pointer;
+  }
 }
-.el-menu{
+.el-menu {
   padding-left: 8%;
 }
-.el-menu.el-menu--horizontal{
+.el-menu.el-menu--horizontal {
   border-bottom: 0px;
 }
-/deep/.home_footer{
+/deep/.home_footer {
   background: #222836;
   height: 500px;
 }
-
+.state {
+  height: 100%;
+  width: 100%;
+  // background: red;
+  display: inline-block;
+  // padding: 0px 5px 0px 5px;
+}
+.el-menu-item {
+  background: red;
+}
 </style>

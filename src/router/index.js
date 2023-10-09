@@ -67,7 +67,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Act.vue'),
         hidden: true,
         meta:{
-          title:'首页',
+          title:'首页'
         }
       },
       {
@@ -76,7 +76,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Capability.vue'),
         hidden:true,
         meta:{
-          title:'产品能力',
+          title:'产品能力'
         }
       },
       {
@@ -85,7 +85,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Solution.vue'),
         hidden:true,
         meta:{
-          title:'解决方案',
+          title:'解决方案'
         }
       },
       {
@@ -94,7 +94,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Market.vue'),
         hidden:true,
         meta:{
-          title:'应用服务市场',
+          title:'应用服务市场'
         }
       },
       {
@@ -103,7 +103,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Developer.vue'),
         hidden:true,
         meta:{
-          title:'开发者',
+          title:'开发者'
         }
       },
       {
@@ -112,7 +112,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Support.vue'),
         hidden:true,
         meta:{
-          title:'服务支持',
+          title:'服务支持'
         }
       },
       {
@@ -121,7 +121,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/National.vue'),
         hidden:true,
          meta:{
-          title:'了解国能云',
+          title:'了解国能云'
         }
       },
       {
@@ -130,10 +130,25 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Coal.vue'),
         hidden:true,
         meta:{
-          title:'煤炭行业云',
+          title:'煤炭行业云'
+        }
+      },
+      {
+        path:'document',
+        name:'document',
+        component: () => import('@/views/Home/Document.vue'),
+        hidden:true,
+        meta:{
+          title:'文档手册'
         }
       }
     ]
+  },
+  {
+    path:'/control',
+    name:'/control',
+    component:()=>import('@/views/ControlPanel/ControlPanel.vue'),
+    meta:{title:'控制台'}
   },
   {
     path: '/',

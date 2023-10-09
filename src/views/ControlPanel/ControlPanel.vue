@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>煤炭行业云</h1>
+        <h1>控制台</h1>
     </div>
 </template>
 
@@ -24,6 +24,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 
 </style>

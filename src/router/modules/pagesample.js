@@ -57,7 +57,7 @@ const pagesampleRouter = {
                 title: '表单页面',
                 icon: 'pageform',
                 roles: ['pagesample-form']
-            },
+            }
             // children: [
             //     {
             //         path: 'one',
