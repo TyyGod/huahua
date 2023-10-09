@@ -38,7 +38,7 @@
     </div>
 </template>
 <script>
-import MavonEditor from '@/components/MavonEditor';
+import MavonEditor from '@/components/MavonEditor'
 export default {
     components: {
         MavonEditor
@@ -47,18 +47,18 @@ export default {
         return {
             content: '# This is Test.',
             contentHtml: ''
-        };
+        }
     },
     methods: {
         change(v, html) {
-            console.log(v);
-            this.contentHtml = html;
+            console.log(v)
+            this.contentHtml = html
         },
         imgUpload(pos, $file , $vm) {
            
-            var formdata = new FormData();
-            formdata.append('image', $file);
-            console.log(pos, $file, formdata);
+            var formdata = new FormData()
+            formdata.append('image', $file)
+            console.log(pos, $file, formdata)
             /* 
             // ajax 上传
             const _this = this;
@@ -75,8 +75,8 @@ export default {
                 console.log(err);
             }); */
 
-            $vm.$img2Url(pos, 'https://gitee.com/lqsong/public/raw/master/common/Alipay.png');
+            $vm.$img2Url(pos, 'https://gitee.com/lqsong/public/raw/master/common/Alipay.png')
         }
     }
-};
+}
 </script>

@@ -17,20 +17,20 @@
     </div>
 </template>
 <script>
-import svgIcons from './svg-icons';
+import svgIcons from './svg-icons'
 export default {
     data() {
         return {
             svgIcons
-        };
+        }
     },
     methods: {
         generateIconCode(symbol) {
-            return `<svg-icon icon-class="${symbol}" />`;
+            return `<svg-icon icon-class="${symbol}" />`
         }
     }
 
-};
+}
 </script>
 <style lang="scss" scoped>
 .list {

@@ -2,8 +2,8 @@
  * 页面示例-路由配置
  * @author LiQingSong
  */
-import LayoutIndex from '@/layout/Index';
-import AppMainLayout from '@/layout/components/AppMain';
+import LayoutIndex from '@/layout/Index'
+import AppMainLayout from '@/layout/components/AppMain'
 
 const pagesampleRouter = {
     path: '/pagesample',
@@ -110,6 +110,6 @@ const pagesampleRouter = {
         
         
     ]
-};
+}
 
-export default pagesampleRouter;
+export default pagesampleRouter

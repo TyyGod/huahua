@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 export default {
     name: 'FormFooterToolbar',
     computed: {
@@ -12,10 +12,10 @@ export default {
           'sidebarOpened'
         ]),
         isCollapse() {
-            return !this.sidebarOpened;
+            return !this.sidebarOpened
         }
     }
-};
+}
 </script>
 <style lang="scss" scoped>
 @import "~@/assets/css/variables.scss";

@@ -19,4 +19,4 @@ export default {
         "redo"
     ],
     language: 'zh-cn'
-};
+}

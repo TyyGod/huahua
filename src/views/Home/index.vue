@@ -59,6 +59,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import echarts from 'echarts'
+require('echarts/theme/macarons') // echarts theme
+import { debounce } from '@/utlis'
 export default {
   name: "Vue",
   props: {},
@@ -66,6 +70,7 @@ export default {
     return {
       activeIndex: "",
       drawer: false,
+
     };
   },
   mounted() {
@@ -118,7 +123,7 @@ export default {
 
     // },
   },
-};
+}
 </script>
 
 <style lang='less' scoped>

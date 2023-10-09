@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-import CKEditor from '@/components/CKEditor';
+import CKEditor from '@/components/CKEditor'
 export default {
     components: {
         CKEditor
@@ -20,7 +20,7 @@ export default {
     data(){
         return {
             editorData: '<p>Content of the editor.</p>'
-        };
+        }
     }
-};
+}
 </script>
