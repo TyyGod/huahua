@@ -26,6 +26,7 @@ import '@/router/permission'
 
 // 引入扩展内容
 import '@/main.ext'
+import './rem'
 
 // 设置 ElementUI
 Vue.use(ElementUI, { size: 'small' })
