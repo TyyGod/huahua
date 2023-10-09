@@ -1,4 +1,4 @@
-/** 
+/**
  * Vuex.Store getters
  * @author LiQingSong
  */

@@ -13,10 +13,9 @@ files.keys().forEach((key) => {
   mocks = mocks.concat(files(key).default)
 })
 
-
 // 注册所有的 mock 服务
 mocks.forEach((item) => {
-    // console.log(item);
-    Mock.mock(new RegExp(`${item.url}`), item.type || 'get', item.response)
+  // console.log(item);
+  Mock.mock(new RegExp(`${item.url}`), item.type || 'get', item.response)
 })
 

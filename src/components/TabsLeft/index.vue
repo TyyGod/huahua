@@ -1,25 +1,25 @@
 <template>
-    <el-tabs class="tabsleft" tab-position="left" :style="{height: height}" >
-        <slot></slot>
-    </el-tabs>
+  <el-tabs class="tabsleft" tab-position="left" :style="{height: height}">
+    <slot />
+  </el-tabs>
 </template>
 <script>
 export default {
-    name: 'TabsLeft',
-    props: {
-        height: {
-            type: String,
-            required: true
-        }
-    },
-    data() {
-        return {
-        }
-    },
-    methods: {
-    },
-    mounted() {
+  name: 'TabsLeft',
+  props: {
+    height: {
+      type: String,
+      required: true
     }
+  },
+  data() {
+    return {
+    }
+  },
+  mounted() {
+  },
+  methods: {
+  }
 }
 </script>
 <style lang="scss" scoped>

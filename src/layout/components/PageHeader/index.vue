@@ -1,22 +1,22 @@
 <template>
-    <div class="page-header">
-        <div class="page-header-conent">
-            <div class="page-header-top">
-                <slot>标题</slot>
-            </div>
-            <div class="page-header-msg" v-if="into !== ''">{{ into }}</div>
-        </div>
+  <div class="page-header">
+    <div class="page-header-conent">
+      <div class="page-header-top">
+        <slot>标题</slot>
+      </div>
+      <div v-if="into !== ''" class="page-header-msg">{{ into }}</div>
     </div>
+  </div>
 </template>
 <script>
 export default {
-    name: 'PageHeader',
-    props: {
-        into: {
-            type: String,
-            default: ''
-        }
+  name: 'PageHeader',
+  props: {
+    into: {
+      type: String,
+      default: ''
     }
+  }
 }
 </script>
 <style lang="scss" scoped>

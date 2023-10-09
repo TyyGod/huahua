@@ -7,11 +7,11 @@ import request from '@/service/lib/request'
  * @author LiQingSong
  */
 export function login(url, data) {
-    return request({
-      url: url,
-      method: 'post',
-      data
-    })
+  return request({
+    url: url,
+    method: 'post',
+    data
+  })
 }
 
 /**
@@ -19,11 +19,11 @@ export function login(url, data) {
  * @author LiQingSong
  */
 export function getInfo(token) {
-    return request({
-      url: '/user/info',
-      method: 'get',
-      params: { token: token }
-    })
+  return request({
+    url: '/user/info',
+    method: 'get',
+    params: { token: token }
+  })
 }
 // 用户头像上传
 export function uploadAvatar(data) {
@@ -39,8 +39,8 @@ export function uploadAvatar(data) {
  * @author LiQingSong
  */
 export function logout(url) {
-    return request({
-      url: url,
-      method: 'post'
-    })
+  return request({
+    url: url,
+    method: 'post'
+  })
 }

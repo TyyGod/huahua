@@ -1,20 +1,20 @@
 <template>
-    <div class="form-footer-toolbar" :class="{'narrow': isCollapse}">
-        <slot></slot>
-    </div>
+  <div class="form-footer-toolbar" :class="{'narrow': isCollapse}">
+    <slot />
+  </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
 export default {
-    name: 'FormFooterToolbar',
-    computed: {
-        ...mapGetters([
-          'sidebarOpened'
-        ]),
-        isCollapse() {
-            return !this.sidebarOpened
-        }
+  name: 'FormFooterToolbar',
+  computed: {
+    ...mapGetters([
+      'sidebarOpened'
+    ]),
+    isCollapse() {
+      return !this.sidebarOpened
     }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -33,7 +33,7 @@ export default {
   box-shadow: 0 -1px 2px rgba(0,0,0,.03);
   transition-duration: 0.1s;
   &.narrow{
-      left: $leftSideBarMinWidth;      
+      left: $leftSideBarMinWidth;
   }
 }
 </style>

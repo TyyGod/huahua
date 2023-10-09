@@ -1,4 +1,4 @@
-/** 
+/**
  * 验证工具
  * @author LiQingSong
  */
@@ -12,5 +12,4 @@
 export function isExternal(path) {
   return /^(https?:|mailto:|tel:)/.test(path)
 }
-
 

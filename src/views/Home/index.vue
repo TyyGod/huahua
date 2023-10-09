@@ -1,5 +1,4 @@
 <template>
-   
   <el-container class="container">
     <el-header class="home_header">
       <div class="logo">
@@ -10,11 +9,10 @@
           :default-active="activeIndex"
           class="el-menu-demo"
           mode="horizontal"
-          @select="handleSelect"
-          active-text-color='#AC2807'
-          background-color='#F6F9FB'
+          active-text-color="#AC2807"
+          background-color="#F6F9FB"
           router
-
+          @select="handleSelect"
         >
           <el-menu-item index="/home/act">首页</el-menu-item>
           <el-menu-item index="/home/capability">产品能力</el-menu-item>
@@ -34,42 +32,25 @@
         <h3>个人</h3>
       </div>
     </el-header>
-    <el-main style="height:500px"> 
-      <router-view/>
+    <el-main style="height:500px">
+      <router-view />
     </el-main>
     <el-footer class="home_footer" style="height:400px">
-        <div class="home_footer_content">
-
-        </div>
+      <div class="home_footer_content" />
     </el-footer>
   </el-container>
 </template>
 
 <script>
-<<<<<<< HEAD
-=======
 import { mapGetters } from 'vuex'
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import { debounce } from '@/utlis'
->>>>>>> javascript.v1
 export default {
-  name: "Vue",
+  name: 'Vue',
   props: {},
   data() {
     return {
-<<<<<<< HEAD
-       activeIndex: '/home/act',
-    };
-  },
-  mounted() {},
-  methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      }
-  },
-};
-=======
       chart: null,
       resizeHandler: null,
       radio1: '今日',
@@ -78,38 +59,12 @@ export default {
   },
   computed: {
     ...mapGetters([
-        'sidebarOpened'
-      ])
+      'sidebarOpened'
+    ])
   },
   watch: {
     sidebarOpened() {
       this.resizeHandler()
-    }
-  },
-  methods: {
-    initChart() {
-      this.chart = echarts.init(document.getElementById('home-traffic-chart'),'macarons')
-      this.chart.setOption({
-            grid: {
-              left: '50px',
-              right: '20px',
-              top: '10px',
-              bottom: '35px'
-            },
-            xAxis: {
-              data: ['1月', '2月', '3月', '4月', '5月', '6月','7月', '8月', '9月', '10月', '11月', '12月']
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'bar',
-                data: [5888, 3838, 15880, 12888, 18888, 16888,5888, 3838, 15880, 12888, 18888, 16888]
-            }]
-      })
-
-    },
-    initResizeEvent() {
-      window.addEventListener('resize', this.resizeHandler)
     }
   },
   mounted() {
@@ -121,9 +76,33 @@ export default {
     }, 100)
     _this.initChart()
     _this.initResizeEvent()
+  },
+  methods: {
+    initChart() {
+      this.chart = echarts.init(document.getElementById('home-traffic-chart'), 'macarons')
+      this.chart.setOption({
+        grid: {
+          left: '50px',
+          right: '20px',
+          top: '10px',
+          bottom: '35px'
+        },
+        xAxis: {
+          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        },
+        yAxis: {},
+        series: [{
+          name: '销量',
+          type: 'bar',
+          data: [5888, 3838, 15880, 12888, 18888, 16888, 5888, 3838, 15880, 12888, 18888, 16888]
+        }]
+      })
+    },
+    initResizeEvent() {
+      window.addEventListener('resize', this.resizeHandler)
+    }
   }
 }
->>>>>>> javascript.v1
 </script>
 
 <style lang='less' scoped>

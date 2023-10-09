@@ -1,38 +1,39 @@
 <template>
-    <div id="indexlayout-left" :class="{'narrow': isCollapse}">
-      <div class="indexlayout-left-logo" v-if="siteSidebarLogo">
-        <router-link to="/" class="logo-url">
-          <h3 v-if="!isCollapse" class="logo-title" >AdminElementVue</h3>
-          <img v-else alt="Vue logo" src="../../assets/images/logo.png" width="30">
-        </router-link>
-      </div>
-      <div class="indexlayout-left-menu">
-          <el-scrollbar class="flex-scrollbar" wrap-class="default-scrollbar__wrap">
-              <el-menu
-                :background-color="variables.menuBg"
-                :text-color="variables.menuText"
-                :default-active="getSidebarMenuActive"
-                :collapse="isCollapse"
-                :collapse-transition="false">
-
-                  <template v-if="!siteTopNavEnable">
-                    <sidebar-menu-item v-for="route in permission_routes" :key="route.path" :routes="route" :base-path="route.path" :resolve-path="route.path" :active-top-menu="getTopMenuActive"/>
-                  </template>
-                  <template v-else>
-                    <template v-for="route in permission_routes">
-                      <template v-if="!route.hidden">
-
-                        <sidebar-menu-item v-for="route2 in route.children" :key="route.path + '/' + route2.path" :routes="route2" :base-path="route.path" :resolve-path="route.path" :active-top-menu="getTopMenuActive"/>
-                    
-                      </template>
-                    </template>
-                  </template>
-           
-              </el-menu>
-        
-          </el-scrollbar>
-      </div>
+  <div id="indexlayout-left" :class="{'narrow': isCollapse}">
+    <div v-if="siteSidebarLogo" class="indexlayout-left-logo">
+      <router-link to="/" class="logo-url">
+        <h3 v-if="!isCollapse" class="logo-title">AdminElementVue</h3>
+        <img v-else alt="Vue logo" src="../../assets/images/logo.png" width="30">
+      </router-link>
     </div>
+    <div class="indexlayout-left-menu">
+      <el-scrollbar class="flex-scrollbar" wrap-class="default-scrollbar__wrap">
+        <el-menu
+          :background-color="variables.menuBg"
+          :text-color="variables.menuText"
+          :default-active="getSidebarMenuActive"
+          :collapse="isCollapse"
+          :collapse-transition="false"
+        >
+
+          <template v-if="!siteTopNavEnable">
+            <sidebar-menu-item v-for="route in permission_routes" :key="route.path" :routes="route" :base-path="route.path" :resolve-path="route.path" :active-top-menu="getTopMenuActive" />
+          </template>
+          <template v-else>
+            <template v-for="route in permission_routes">
+              <template v-if="!route.hidden">
+
+                <sidebar-menu-item v-for="route2 in route.children" :key="route.path + '/' + route2.path" :routes="route2" :base-path="route.path" :resolve-path="route.path" :active-top-menu="getTopMenuActive" />
+
+              </template>
+            </template>
+          </template>
+
+        </el-menu>
+
+      </el-scrollbar>
+    </div>
+  </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
@@ -40,35 +41,35 @@ import variables from '@/assets/css/variables.scss'
 import SidebarMenuItem from '@/layout/components/SidebarMenuItem'
 import { getBelongTopMenuPath, getActiveSidebarMenuPath } from '@/utlis/permission'
 export default {
-    name: 'LayoutIndexLeft',
-    components: {
-      SidebarMenuItem
+  name: 'LayoutIndexLeft',
+  components: {
+    SidebarMenuItem
+  },
+  computed: {
+    ...mapGetters([
+      'permission_routes',
+      'siteTopNavEnable',
+      'siteSidebarLogo',
+      'sidebarOpened'
+    ]),
+    variables() {
+      return variables
     },
-    computed: {
-        ...mapGetters([
-          'permission_routes',
-          'siteTopNavEnable',
-          'siteSidebarLogo',
-          'sidebarOpened'
-        ]),
-        variables() {
-            return variables
-        },
-        isCollapse() {
-            return !this.sidebarOpened
-        },
-        getSidebarMenuActive: function() {
-          const route = this.$route
-          return getActiveSidebarMenuPath(route)
-        },
-        getTopMenuActive() {
-          let route = this.$route
-          return getBelongTopMenuPath(route)
-        }
+    isCollapse() {
+      return !this.sidebarOpened
     },
-    mounted() { 
-        // console.log(this.permission_routes);
+    getSidebarMenuActive: function() {
+      const route = this.$route
+      return getActiveSidebarMenuPath(route)
+    },
+    getTopMenuActive() {
+      const route = this.$route
+      return getBelongTopMenuPath(route)
     }
+  },
+  mounted() {
+    // console.log(this.permission_routes);
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -104,7 +105,7 @@ export default {
     img{
       vertical-align: middle;
     }
-    
+
   }
   .indexlayout-left-menu{
     flex: 1;
@@ -117,7 +118,7 @@ export default {
   }
 
   &.narrow{
-      width: $leftSideBarMinWidth;      
+      width: $leftSideBarMinWidth;
   }
 }
 </style>

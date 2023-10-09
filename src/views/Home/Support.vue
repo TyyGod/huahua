@@ -1,27 +1,27 @@
 <template>
-    <div>
-        <h1>服务支持</h1>
-    </div>
+  <div>
+    <h1>服务支持</h1>
+  </div>
 </template>
 
 <script>
 export default {
-    name:'Vue',
-    props: {
+  name: 'Vue',
+  props: {
 
-    },
-    data() {
-        return {
+  },
+  data() {
+    return {
 
-        };
-    },
-    mounted() {
+    }
+  },
+  mounted() {
 
-    },
-    methods: {
+  },
+  methods: {
 
-    },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
