@@ -15,7 +15,7 @@
             router
             @select="handleSelect"
           >
-            <el-menu-item index="/home/act">首页</el-menu-item>
+            <el-menu-item id="parent" ref="parent" index="/home/act">首页</el-menu-item>
             <el-menu-item index="/home/capability">产品能力</el-menu-item>
 
             <el-menu-item index="/home/solution">解决方案</el-menu-item>
@@ -30,18 +30,34 @@
           <h3>搜索</h3>
         </div>
         <div class="main">
-          <h3>个人</h3>
+          <span @click="skipDocument"> 文档 </span>
+          <span @click="skipControlPanel"> 控制台 </span>
         </div>
       </el-header>
       <el-main style="height:500px">
         <router-view />
       </el-main>
       <Footer :last="test" @lastChange="lastChange" />
+    </el-container>
+    <el-drawer
+      id="drawer"
+      :visible.sync="drawer"
+      direction="ttb"
+      :before-close="handleClose"
+      :modal="false"
+      :modal-append-to-body="false"
+      :with-header="false"
+      size="100%"
+    >
+      <div>
+        111
+      </div>
+    </el-drawer>
     <!-- <el-footer class="home_footer" style="height:400px">
       <div class="home_footer_content" />
     </el-footer> -->
-    </el-container>
   </main>
+
 </template>
 
 <script>
@@ -63,7 +79,8 @@ export default {
       radio1: '今日',
       datevalue1: '',
       activeIndex: '',
-      test: 'footer'
+      test: 'footer',
+      drawer: false
     }
   },
   computed: {
@@ -83,14 +100,22 @@ export default {
     }
   },
   mounted() {
-    const _this = this
-    _this.resizeHandler = debounce(() => {
-      if (_this.chart) {
-        _this.chart.resize()
-      }
-    }, 100)
-    // _this.initChart()
-    _this.initResizeEvent()
+    const that = this
+    const url = JSON.parse(localStorage.getItem('url')) || '/home/act'
+    this.activeIndex = url
+
+    const parent = document.getElementById('parent')
+    const el_drawer = document.querySelector('.el-drawer')
+    console.log(el_drawer)
+    // this.$refs.parent.$el.onmouseenter = function() {
+    //   that.drawer = true
+    // }
+    parent.onmouseenter = function() {
+      that.drawer = true
+    }
+    el_drawer.onmouseleave = function() {
+      that.drawer = false
+    }
   },
   methods: {
     tohome() {
@@ -122,8 +147,20 @@ export default {
         }]
       })
     },
-    initResizeEvent() {
-      window.addEventListener('resize', this.resizeHandler)
+    handleClose(done) {
+      done()
+      // this.$confirm("确认关闭？")
+      //   .then((_) => {
+      //     done();
+      //   })
+      //   .catch((_) => {});
+    },
+    skipDocument() {
+      this.$router.push('/home/document')
+      this.activeIndex = '/home/act'
+    },
+    skipControlPanel() {
+      this.$router.push('/control')
     }
   }
 }
@@ -134,8 +171,12 @@ export default {
   background: #f6f6f6;
   min-height: 100vh;
 }
-.container{
-  background: #F6F9FB;
+.container {
+  background: #f6f9fb;
+}
+#drawer{
+  position: absolute;
+  top: 70px;
 }
 .home_header {
   display: flex;
@@ -164,23 +205,42 @@ export default {
   justify-content: center;
 }
 .main {
+  // line-height: 500px;
   flex-grow: 3;
-  background: yellow;
+  // background: yellow;
   text-align: center;
   line-height: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 60px;
+  font-size: 14px;
+  color: rgb(144, 147, 153);
+  span:nth-child(2) {
+    margin-left: 50px;
+  }
+  span:hover {
+    cursor: pointer;
+  }
 }
-.el-menu{
+.el-menu {
   padding-left: 8%;
 }
-.el-menu.el-menu--horizontal{
+.el-menu.el-menu--horizontal {
   border-bottom: 0px;
 }
-/deep/.home_footer{
+/deep/.home_footer {
   background: #222836;
   height: 500px;
 }
-
+.state {
+  height: 100%;
+  width: 100%;
+  // background: red;
+  display: inline-block;
+  // padding: 0px 5px 0px 5px;
+}
+.el-menu-item {
+  background: red;
+}
 </style>

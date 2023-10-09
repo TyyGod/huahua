@@ -24,7 +24,7 @@ import '@/components/SvgIcon'
 // 权限控制
 import '@/router/permission'
 
-import '@/assets/style/common.scss'
+// import '@/assets/style/common.scss'
 // 引入扩展内容
 import '@/main.ext'
 import './rem'
