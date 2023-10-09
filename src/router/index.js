@@ -1,4 +1,4 @@
-/** 
+/**
  * 路由 主入口
  * @author LiQingSong
  * 路由参数说明：
@@ -15,7 +15,7 @@
             meta: { title: '标题' },   必填
             linkpath: '/demo',         链接 -  /demo 内部路由 /^(https?:|mailto:|tel:)/.test(path)外链 , 可不写
           }
-    ],            
+    ],
     activeMenu: '/example/list'  侧栏选中，如果设置路径，侧栏将突出显示你设置的路径，默认 router.path
     belongTopMenu: '/news'       所属顶级菜单,用于选中顶部菜单，与菜单切换，默认不设置 path.split('/') 第1个；
                                             三级此参数的作用是选中顶级菜单 ，二级此参数的作用是所属某个顶级菜单的下面，两个层级的必须同时填写一致
@@ -57,98 +57,98 @@ export const constantRoutes = [
     hidden: true
   },
   {
-    path:'/home',
+    path: '/home',
     component: () => import('@/views/Home'),
     hidden: true,
-    children:[
+    children: [
       {
-        path:'act',
-        name:'act',
+        path: 'act',
+        name: 'act',
         component: () => import('@/views/Home/Act.vue'),
         hidden: true,
-        meta:{
-          title:'首页'
+        meta: {
+          title: '首页'
         }
       },
       {
-        path:'capability',
-        name:'capability',
+        path: 'capability',
+        name: 'capability',
         component: () => import('@/views/Home/Capability.vue'),
-        hidden:true,
-        meta:{
-          title:'产品能力'
+        hidden: true,
+        meta: {
+          title: '产品能力'
         }
       },
       {
-        path:'solution',
-        name:'solution',
+        path: 'solution',
+        name: 'solution',
         component: () => import('@/views/Home/Solution.vue'),
-        hidden:true,
-        meta:{
-          title:'解决方案'
+        hidden: true,
+        meta: {
+          title: '解决方案'
         }
       },
       {
-        path:'market',
-        name:'market',
+        path: 'market',
+        name: 'market',
         component: () => import('@/views/Home/Market.vue'),
-        hidden:true,
-        meta:{
-          title:'应用服务市场'
+        hidden: true,
+        meta: {
+          title: '应用服务市场'
         }
       },
       {
-        path:'developer',
-        name:'developer',
+        path: 'developer',
+        name: 'developer',
         component: () => import('@/views/Home/Developer.vue'),
-        hidden:true,
-        meta:{
-          title:'开发者'
+        hidden: true,
+        meta: {
+          title: '开发者'
         }
       },
       {
-        path:'support',
-        name:'support',
+        path: 'support',
+        name: 'support',
         component: () => import('@/views/Home/Support.vue'),
-        hidden:true,
-        meta:{
-          title:'服务支持'
+        hidden: true,
+        meta: {
+          title: '服务支持'
         }
       },
       {
-        path:'national',
-        name:'national',
+        path: 'national',
+        name: 'national',
         component: () => import('@/views/Home/National.vue'),
-        hidden:true,
-         meta:{
-          title:'了解国能云'
+        hidden: true,
+        meta: {
+          title: '了解国能云'
         }
       },
       {
-        path:'coal',
-        name:'coal',
+        path: 'coal',
+        name: 'coal',
         component: () => import('@/views/Home/Coal.vue'),
-        hidden:true,
-        meta:{
-          title:'煤炭行业云'
+        hidden: true,
+        meta: {
+          title: '煤炭行业云'
         }
       },
       {
-        path:'document',
-        name:'document',
+        path: 'document',
+        name: 'document',
         component: () => import('@/views/Home/Document.vue'),
-        hidden:true,
-        meta:{
-          title:'文档手册'
+        hidden: true,
+        meta: {
+          title: '文档手册'
         }
       }
     ]
   },
   {
-    path:'/control',
-    name:'/control',
-    component:()=>import('@/views/ControlPanel/ControlPanel.vue'),
-    meta:{title:'控制台'}
+    path: '/control',
+    name: '/control',
+    component: () => import('@/views/ControlPanel/ControlPanel.vue'),
+    meta: { title: '控制台' }
   },
   {
     path: '/',
@@ -166,7 +166,7 @@ export const constantRoutes = [
     //     path: 'monitor',
     //     component: () => import('@/views/Home'),
     //     name: 'monitor',
-    //     meta: { 
+    //     meta: {
     //         title: '自定义面包屑',
     //         icon: 'monitoring',
     //         belongTopMenu: '/',
@@ -196,7 +196,6 @@ export const constantRoutes = [
     // ]
   }
 
- 
 ]
 
 /**
@@ -204,7 +203,7 @@ export const constantRoutes = [
  * 需要根据用户角色动态加载的路由
  */
 export const asyncRoutes = [
-  
+
   // 引入其他模块路由
   componentRouter,
   pagesampleRouter,
@@ -213,7 +212,7 @@ export const asyncRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-/* 
+/*
 // 打印对应链接的权限
 const consoleLogRouteRoles = (routes, level) => {
    let obj = {};

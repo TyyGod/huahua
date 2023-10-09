@@ -1,34 +1,34 @@
 <template>
-    <div  class="main-conent main-conent-minheight">
-        <el-card shadow="never" class="border-none">
-            <div class="list" v-for="item of svgIcons" :key="item">
-                <el-tooltip placement="top">
-                    <div slot="content">
-                        {{ generateIconCode(item) }}
-                    </div>
-                    <div class="icon-item">
-                        <svg-icon :icon-class="item" />
-                        <span>{{ item }}</span>
-                    </div>
-                </el-tooltip>
-            </div>
-           
-        </el-card>
-    </div>
+  <div class="main-conent main-conent-minheight">
+    <el-card shadow="never" class="border-none">
+      <div v-for="item of svgIcons" :key="item" class="list">
+        <el-tooltip placement="top">
+          <div slot="content">
+            {{ generateIconCode(item) }}
+          </div>
+          <div class="icon-item">
+            <svg-icon :icon-class="item" />
+            <span>{{ item }}</span>
+          </div>
+        </el-tooltip>
+      </div>
+
+    </el-card>
+  </div>
 </template>
 <script>
 import svgIcons from './svg-icons'
 export default {
-    data() {
-        return {
-            svgIcons
-        }
-    },
-    methods: {
-        generateIconCode(symbol) {
-            return `<svg-icon icon-class="${symbol}" />`
-        }
+  data() {
+    return {
+      svgIcons
     }
+  },
+  methods: {
+    generateIconCode(symbol) {
+      return `<svg-icon icon-class="${symbol}" />`
+    }
+  }
 
 }
 </script>

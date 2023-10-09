@@ -1,4 +1,4 @@
-/** 
+/**
  * Vuex.Store主入口
  * @author LiQingSong
  */
@@ -13,7 +13,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    app,    
+    app,
     user,
     permission
   },

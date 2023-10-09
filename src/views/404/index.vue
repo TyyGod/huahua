@@ -1,24 +1,24 @@
 <template>
   <div class="login">
-      <div class="form">
-        <h1 class="title">
-          404 Error
-        </h1>
-        <p>抱歉，你访问的页面不存在</p>
-        <el-button  type="primary" size="mini" @click="$router.push('/')">返回首页</el-button>
-      </div>
+    <div class="form">
+      <h1 class="title">
+        404 Error
+      </h1>
+      <p>抱歉，你访问的页面不存在</p>
+      <el-button type="primary" size="mini" @click="$router.push('/')">返回首页</el-button>
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: 'Login',
-    data() {
-      return {
-        loading: false
-      }
-    },
-    methods: {
+  data() {
+    return {
+      loading: false
     }
+  },
+  methods: {
+  }
 }
 </script>
 <style lang="scss" scoped>

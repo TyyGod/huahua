@@ -1,48 +1,48 @@
 <template>
-        <div id="indexlayout-right-top" :class="{'enableTopNav': !siteTopNavEnable}">
-            <div class="indexlayout-right-top-top">
-               <div class="indexlayout-flexible" :class="{'active': isCollapse}" @click="toggleSideBar">
-                 <svg-icon icon-class="s-fold" />
-               </div>
-               <div class="indexlayout-top-menu">
-                  <el-scrollbar class="horizontal-scrollbar">
-                      <template v-if="siteTopNavEnable">
+  <div id="indexlayout-right-top" :class="{'enableTopNav': !siteTopNavEnable}">
+    <div class="indexlayout-right-top-top">
+      <div class="indexlayout-flexible" :class="{'active': isCollapse}" @click="toggleSideBar">
+        <svg-icon icon-class="s-fold" />
+      </div>
+      <div class="indexlayout-top-menu">
+        <el-scrollbar class="horizontal-scrollbar">
+          <template v-if="siteTopNavEnable">
 
-                          <template v-for="route in permission_routes">
-                            <app-link v-if="!route.hidden" :to="route.path" :key="route.path" class="indexlayout-top-menu-li" :class="{'active': getTopMenuActive === route.path}">
-                                {{ route.meta.title }}
-                            </app-link>
-                          </template>
+            <template v-for="route in permission_routes">
+              <app-link v-if="!route.hidden" :key="route.path" :to="route.path" class="indexlayout-top-menu-li" :class="{'active': getTopMenuActive === route.path}">
+                {{ route.meta.title }}
+              </app-link>
+            </template>
 
-                      </template> 
-                      <breadcrumb v-else class="breadcrumb" />   
-                  </el-scrollbar>
-               </div>
-               <div class="indexlayout-top-menu-right">
-                    <router-link class="index-layout-message" to="/" title="消息">
-                        <svg-icon icon-class="message" />
-                        <el-badge :value="msgtotal" :max="10" class="index-layout-message-item"></el-badge>
-                    </router-link>
+          </template>
+          <breadcrumb v-else class="breadcrumb" />
+        </el-scrollbar>
+      </div>
+      <div class="indexlayout-top-menu-right">
+        <router-link class="index-layout-message" to="/" title="消息">
+          <svg-icon icon-class="message" />
+          <el-badge :value="msgtotal" :max="10" class="index-layout-message-item" />
+        </router-link>
 
-                    <el-dropdown>
-                        <span class="el-dropdown-link" :title="name">
-                            <span class="el-dropdown-link-text">{{ name }}</span>
-                            <i class="el-icon-arrow-down el-icon--right"></i>
-                        </span>
-                        <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>个人信息</el-dropdown-item>
-                            <el-dropdown-item divided  @click.native="logout">退出</el-dropdown-item>
-                        </el-dropdown-menu>
-                    </el-dropdown>
-               </div>
-            </div>
-            <div class="indexlayout-right-top-bot" v-if="siteTopNavEnable">
-                <div class="indexlayout-right-top-bot-home">
-                  <i class="el-icon-location-outline" />
-                </div>
-                <breadcrumb class="breadcrumb" />               
-            </div>
-        </div>
+        <el-dropdown>
+          <span class="el-dropdown-link" :title="name">
+            <span class="el-dropdown-link-text">{{ name }}</span>
+            <i class="el-icon-arrow-down el-icon--right" />
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>个人信息</el-dropdown-item>
+            <el-dropdown-item divided @click.native="logout">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
+    </div>
+    <div v-if="siteTopNavEnable" class="indexlayout-right-top-bot">
+      <div class="indexlayout-right-top-bot-home">
+        <i class="el-icon-location-outline" />
+      </div>
+      <breadcrumb class="breadcrumb" />
+    </div>
+  </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
@@ -67,7 +67,7 @@ export default {
       return !this.sidebarOpened
     },
     getTopMenuActive() {
-      let route = this.$route
+      const route = this.$route
       return getBelongTopMenuPath(route)
     }
   },
@@ -77,14 +77,13 @@ export default {
     },
     async logout() {
       try {
-          const { isExternal, siteLoginRouter } = await this.$store.dispatch('user/logout')
-          if (!isExternal){
-            this.$router.push(siteLoginRouter + "?redirect=" + this.$route.fullPath)
-          }
+        const { isExternal, siteLoginRouter } = await this.$store.dispatch('user/logout')
+        if (!isExternal) {
+          this.$router.push(siteLoginRouter + '?redirect=' + this.$route.fullPath)
+        }
       } catch (error) {
-          this.$message.error(error || 'Has Error')
+        this.$message.error(error || 'Has Error')
       }
-      
     }
   }
 }
@@ -210,7 +209,7 @@ export default {
               background-color: $mainBgColor;
               color: $BreadcrumbFontColor;
             }
-            
+
           }
 
       }

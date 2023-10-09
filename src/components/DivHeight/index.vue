@@ -1,25 +1,25 @@
 <template>
-    <div class="divheight" :style="{height: height}" >
-        <slot></slot>
-    </div>
+  <div class="divheight" :style="{height: height}">
+    <slot />
+  </div>
 </template>
 <script>
 export default {
-    name: 'DivHeight',
-    props: {
-        height: {
-            type: String,
-            required: true
-        }
-    },
-    data() {
-        return {
-        }
-    },
-    methods: {
-    },
-    mounted() {
+  name: 'DivHeight',
+  props: {
+    height: {
+      type: String,
+      required: true
     }
+  },
+  data() {
+    return {
+    }
+  },
+  mounted() {
+  },
+  methods: {
+  }
 }
 </script>
 <style lang="scss" scoped>

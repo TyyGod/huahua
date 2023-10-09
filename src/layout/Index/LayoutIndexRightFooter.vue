@@ -1,19 +1,19 @@
 <template>
-    <div class="indexlayout-right-footer">
-        <div class="footer-links">
-            <a href="http://jsv1-demo.admin-element-vue.liqingsong.cc" target="_blank">DEMO</a>
-            <a href="https://github.com/lqsong/admin-element-vue/tree/javascript.v1" target="_blank">Github</a>
-            <a href="https://liqingsong.cc" target="_blank">博客</a>
-            <a href="http://www.wyxgn.com" target="_blank">网页小功能</a>
-        </div>
-        <div class="footer-copyright">
-            Copyright © 2020 liqingsong.cc, All Rights Reserved
-        </div>
+  <div class="indexlayout-right-footer">
+    <div class="footer-links">
+      <a href="http://jsv1-demo.admin-element-vue.liqingsong.cc" target="_blank">DEMO</a>
+      <a href="https://github.com/lqsong/admin-element-vue/tree/javascript.v1" target="_blank">Github</a>
+      <a href="https://liqingsong.cc" target="_blank">博客</a>
+      <a href="http://www.wyxgn.com" target="_blank">网页小功能</a>
     </div>
+    <div class="footer-copyright">
+      Copyright © 2020 liqingsong.cc, All Rights Reserved
+    </div>
+  </div>
 </template>
 <script>
 export default {
-    name: 'LayoutIndexRightFooter'
+  name: 'LayoutIndexRightFooter'
 }
 </script>
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <template>
-     
+
   <div class="act">
     <div class="block">
       <el-carousel height="500px">
@@ -13,38 +13,36 @@
             <img
               src="https://img2.baidu.com/it/u=638285213,1746517464&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800"
               alt=""
-            />
+            >
           </div>
           <button>登录</button>
         </div>
         <div class="loginBox_footer">
-               <div class="loginBox_footer_box">
-                     <div class="loginBox_footer_box_content">
-                            <div class="top">
-                                   公告栏
-                            </div>
-                            <div class="line">
-
-                            </div>
-                     </div>
-               </div>
+          <div class="loginBox_footer_box">
+            <div class="loginBox_footer_box_content">
+              <div class="top">
+                公告栏
+              </div>
+              <div class="line" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-       
+
   </div>
 </template>
 
 <script>
 export default {
-  name: "Vue",
+  name: 'Vue',
   props: {},
   data() {
-    return {};
+    return {}
   },
   mounted() {},
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <style lang="less">

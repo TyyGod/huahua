@@ -2,17 +2,17 @@
   <div id="indexlayout">
     <layout-index-left />
     <div id="indexlayout-right" :class="{'fiexd-header': siteFiexdHeader}">
-        <layout-index-right-top />
-        <div class="indexlayout-right-main" >
-          <app-main />
-          <layout-index-right-footer />
-        </div>
-    </div>  
-    <site-settings />  
-  </div>  
+      <layout-index-right-top />
+      <div class="indexlayout-right-main">
+        <app-main />
+        <layout-index-right-footer />
+      </div>
+    </div>
+    <site-settings />
+  </div>
 </template>
 <script>
-/** 
+/**
  * Index 框架
  * @author LiQingSong
  */
@@ -36,7 +36,7 @@ export default {
       'siteFiexdHeader'
     ])
   },
-  mounted() { 
+  mounted() {
   }
 }
 </script>

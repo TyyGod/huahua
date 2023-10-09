@@ -1,11 +1,11 @@
 <template>
-    <div class="document-editor">
-        <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"  @ready="onReady"></ckeditor>
-    </div>    
+  <div class="document-editor">
+    <ckeditor v-model="editorData" :editor="editor" :config="editorConfig" @ready="onReady" />
+  </div>
 </template>
 <script>
 /**
- *  ckeditor5-build-decoupled-document 编辑器 
+ *  ckeditor5-build-decoupled-document 编辑器
  *  使用此组件需要安装 npm install @ckeditor/ckeditor5-build-decoupled-document
  */
 import CKEditor from '@ckeditor/ckeditor5-vue'
@@ -14,92 +14,91 @@ import defaultOptions from './default-options'
 import '@ckeditor/ckeditor5-build-decoupled-document/build/translations/zh-cn'
 import request from '@/service/lib/request'
 export default {
-    name: 'CKEditor',
-    components: {
-       ckeditor: CKEditor.component
+  name: 'CKEditor',
+  components: {
+    ckeditor: CKEditor.component
+  },
+  props: {
+    value: {
+      type: String,
+      default: ''
     },
-    props: {
-        value: {
-            type: String,
-            default: ''
-        },
-        options: {
-            type: Object,
-            default() {
-                return defaultOptions
-            }
-        },
-        language: {
-            type: [String, Object],
-            default: 'zh-cn'
-        }
+    options: {
+      type: Object,
+      default() {
+        return defaultOptions
+      }
     },
-    computed: {
-        editorData: {
-            get() {
-                return this.value
-            },
-            set(val) {
-                this.$emit('input', val)
-            }
-        },
-        editorConfig: function() {
-            const options = Object.assign({}, defaultOptions, this.options)
-            options.language = this.language
-            return options
-        }
+    language: {
+      type: [String, Object],
+      default: 'zh-cn'
+    }
+  },
+  data() {
+    return {
+      editor: DecoupledEditor
+    }
+  },
+  computed: {
+    editorData: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     },
-    data() {
+    editorConfig: function() {
+      const options = Object.assign({}, defaultOptions, this.options)
+      options.language = this.language
+      return options
+    }
+  },
+  methods: {
+    onReady(editor) {
+      // Insert the toolbar before the editable area.
+      editor.ui.getEditableElement().parentElement.insertBefore(
+        editor.ui.view.toolbar.element,
+        editor.ui.getEditableElement()
+      )
+
+      editor.plugins.get('FileRepository').createUploadAdapter = loader => {
+        // let val = editor.getData();
         return {
-            editor: DecoupledEditor
-        }
-    },
-    methods: {
-        onReady( editor )  {
-                // Insert the toolbar before the editable area.
-                editor.ui.getEditableElement().parentElement.insertBefore(
-                    editor.ui.view.toolbar.element,
-                    editor.ui.getEditableElement()
-                )
+          upload: async() => {
+            return await loader.file.then(f => {
+              // console.log("file:", f);
 
-                editor.plugins.get('FileRepository').createUploadAdapter = loader => {
-                    //let val = editor.getData();
-                    return {
-                        upload: async () => {
-                            return await loader.file.then(f => {
-                                // console.log("file:", f);
+              const param = new FormData()
+              param.append('file', f)
 
-                                let param = new FormData()
-                                param.append("file",f)
+              return new Promise((resolve, reject) => {
+                request({
+                  headers: { 'Content-Type': 'multipart/form-data' },
+                  url: '/uploads',
+                  method: 'POST',
+                  data: param
+                }).then(res => {
+                  const { code, data } = res
+                  if (code === 200) {
+                    resolve({
+                      default: data.url || ''
+                    })
+                  } else {
+                    reject('上传失败')
+                  }
+                }).catch(err => {
+                  console.log(err)
+                  reject(err)
+                })
+              })
+            })
 
-                                return new Promise((resolve, reject) => {
-                                    request({
-                                        headers: { 'Content-Type': 'multipart/form-data'},
-                                        url: '/uploads',
-                                        method: 'POST',
-                                        data: param
-                                    }).then(res => {  
-                                            const { code, data } = res     
-                                            if(code === 200 ) {
-                                                resolve({
-                                                    default: data.url || ''
-                                                })
-                                            } else {
-                                                reject('上传失败')
-                                            }
-                                    }).catch(err => {                       
-                                        console.log(err)
-                                        reject(err)
-                                    })
-                                })
-                                
-                            })
-
-                            /* 
+            /*
                             return await loader.file.then(f => {
                                 console.log("file:", f);
                                 const F = new FileReader();
-                                F.readAsArrayBuffer(f);                               
+                                F.readAsArrayBuffer(f);
                                 return new Promise(resolve => {
                                     F.onload = function () {
                                         resolve({bufAsArray: F.result, file: f});
@@ -114,11 +113,11 @@ export default {
                                 }
                             });
                             */
-                        }
-                    }
-                }
+          }
         }
+      }
     }
+  }
 }
 </script>
 <style>
