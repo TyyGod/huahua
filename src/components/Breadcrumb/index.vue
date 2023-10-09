@@ -49,7 +49,7 @@ export default {
 <style lang="scss" scoped>
 @import "~@/assets/css/variables.scss";
 .el-breadcrumb-cus {
-    /deep/ .el-breadcrumb__item {
+    ::v-deep .el-breadcrumb__item {
         .el-breadcrumb__inner{
             color: #C0C4CC;
         }

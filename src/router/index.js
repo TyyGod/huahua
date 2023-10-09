@@ -56,51 +56,129 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
-
   {
-    path: '/',
-    redirect: '/home',
-    component: LayoutIndex,
-    meta: { title: '首页', icon: 'home' },
-    children: [
+    path:'/home',
+    component: () => import('@/views/Home'),
+    hidden: true,
+    children:[
       {
-        path: 'home',
-        component: () => import('@/views/Home'),
-        name: 'home',
-        meta: { title: '主控台', icon: 'control', belongTopMenu: '/' }
-      },
-      {
-        path: 'monitor',
-        component: () => import('@/views/Home'),
-        name: 'monitor',
-        meta: { 
-            title: '自定义面包屑',
-            icon: 'monitoring',
-            belongTopMenu: '/',
-            breadcrumb: [
-              {
-                meta: { title: '自定义面包屑' }
-              },
-              {
-                meta: { title: '后台首页' },
-                linkpath: '/home'
-              },
-              {
-                meta: { title: '网页小功能' },
-                linkpath: 'http://www.wyxgn.com'
-              },
-              {
-                meta: { title: '监控页' }
-              }
-            ]
+        path:'act',
+        name:'act',
+        component: () => import('@/views/Home/Act.vue'),
+        hidden: true,
+        meta:{
+          title:'首页',
         }
       },
       {
-        path: 'http://admin-element-vue.liqingsong.cc',
-        name: 'document',
-        meta: { title: '使用文档', icon: 'pagedetails' }
+        path:'capability',
+        name:'capability',
+        component: () => import('@/views/Home/Capability.vue'),
+        hidden:true,
+        meta:{
+          title:'产品能力',
+        }
+      },
+      {
+        path:'solution',
+        name:'solution',
+        component: () => import('@/views/Home/Solution.vue'),
+        hidden:true,
+        meta:{
+          title:'解决方案',
+        }
+      },
+      {
+        path:'market',
+        name:'market',
+        component: () => import('@/views/Home/Market.vue'),
+        hidden:true,
+        meta:{
+          title:'应用服务市场',
+        }
+      },
+      {
+        path:'developer',
+        name:'developer',
+        component: () => import('@/views/Home/Developer.vue'),
+        hidden:true,
+        meta:{
+          title:'开发者',
+        }
+      },
+      {
+        path:'support',
+        name:'support',
+        component: () => import('@/views/Home/Support.vue'),
+        hidden:true,
+        meta:{
+          title:'服务支持',
+        }
+      },
+      {
+        path:'national',
+        name:'national',
+        component: () => import('@/views/Home/National.vue'),
+        hidden:true,
+         meta:{
+          title:'了解国能云',
+        }
+      },
+      {
+        path:'coal',
+        name:'coal',
+        component: () => import('@/views/Home/Coal.vue'),
+        hidden:true,
+        meta:{
+          title:'煤炭行业云',
+        }
       }
     ]
+  },
+  {
+    path: '/',
+    redirect: '/home/act',
+    // component:LayoutIndex,
+    meta: { title: '首页', icon: 'home' }
+    // children: [
+    //   {
+    //     path: 'home',
+    //     component: () => import('@/views/Home'),
+    //     name: 'home',
+    //     meta: { title: '主控台', icon: 'control', belongTopMenu: '/' }
+    //   },
+    //   {
+    //     path: 'monitor',
+    //     component: () => import('@/views/Home'),
+    //     name: 'monitor',
+    //     meta: { 
+    //         title: '自定义面包屑',
+    //         icon: 'monitoring',
+    //         belongTopMenu: '/',
+    //         breadcrumb: [
+    //           {
+    //             meta: { title: '自定义面包屑' }
+    //           },
+    //           {
+    //             meta: { title: '后台首页' },
+    //             linkpath: '/home'
+    //           },
+    //           {
+    //             meta: { title: '网页小功能' },
+    //             linkpath: 'http://www.wyxgn.com'
+    //           },
+    //           {
+    //             meta: { title: '监控页' }
+    //           }
+    //         ]
+    //     }
+    //   },
+    //   {
+    //     path: 'http://admin-element-vue.liqingsong.cc',
+    //     name: 'document',
+    //     meta: { title: '使用文档', icon: 'pagedetails' }
+    //   }
+    // ]
   }
 
  

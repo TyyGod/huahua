@@ -129,7 +129,7 @@ export default {
           margin-right: 10px;
           color: $topMenuHoverFontColor;
           .index-layout-message-item {
-              /deep/ .el-badge__content{
+              ::v-deep .el-badge__content{
                   border: none;
               }
           }

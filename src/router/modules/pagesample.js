@@ -58,21 +58,21 @@ const pagesampleRouter = {
                 icon: 'pageform',
                 roles: ['pagesample-form']
             },
-            children: [
-                {
-                    path: 'one',
-                    component: () => import('@/views/Pagesample/Form/one'),
-                    name: 'pagesample-form-one',
-                    meta: { title: '基础表单', roles: ['pagesample-form-one'] }
-                },
-                {
-                    path: 'two',
-                    component: () => import('@/views/Pagesample/Form/two'),
-                    name: 'pagesample-form-two',
-                    meta: { title: '高级表单', roles: ['pagesample-form-two'] }
-                }
+            // children: [
+            //     {
+            //         path: 'one',
+            //         component: () => import('@/views/Pagesample/Form/one'),
+            //         name: 'pagesample-form-one',
+            //         meta: { title: '基础表单', roles: ['pagesample-form-one'] }
+            //     },
+            //     {
+            //         path: 'two',
+            //         component: () => import('@/views/Pagesample/Form/two'),
+            //         name: 'pagesample-form-two',
+            //         meta: { title: '高级表单', roles: ['pagesample-form-two'] }
+            //     }
                 
-            ]
+            // ]
         },
         {
             path: 'detail',

@@ -6,12 +6,12 @@
 /**
  * 站点名称
  */
- export const siteTitle = 'ADMIN-ELEMENT-VUE';
+ export const siteTitle = '';
 
  /**
  * 是否固定右侧头部(默认配置)
  */
-export const siteFiexdHeader = true;
+export const siteFiexdHeader = false;
 
  /**
  * 是否启用顶部导航(默认配置)

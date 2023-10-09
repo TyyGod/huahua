@@ -355,11 +355,11 @@ export default {
     .tree-table-content {
         flex: 1;
         overflow: auto;
-        /deep/ .el-tree-node__content {
+        ::v-deep .el-tree-node__content {
                 height: auto;
                 border-bottom: 1px solid #EBEEF5;
             }
-        /deep/ .custom-tree-node {
+        ::v-deep .custom-tree-node {
             flex: 1;
             font-size: 14px;
             display: table-row;

@@ -24,7 +24,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .tabsleft {
-    /deep/ .el-tabs__content {
+    ::v-deep .el-tabs__content {
         height: 100%;
         overflow: auto;
     }
