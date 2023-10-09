@@ -35,10 +35,10 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
-import variables from '@/assets/css/variables.scss';
-import SidebarMenuItem from '@/layout/components/SidebarMenuItem';
-import { getBelongTopMenuPath, getActiveSidebarMenuPath } from '@/utlis/permission';
+import { mapGetters } from 'vuex'
+import variables from '@/assets/css/variables.scss'
+import SidebarMenuItem from '@/layout/components/SidebarMenuItem'
+import { getBelongTopMenuPath, getActiveSidebarMenuPath } from '@/utlis/permission'
 export default {
     name: 'LayoutIndexLeft',
     components: {
@@ -52,24 +52,24 @@ export default {
           'sidebarOpened'
         ]),
         variables() {
-            return variables;
+            return variables
         },
         isCollapse() {
-            return !this.sidebarOpened;
+            return !this.sidebarOpened
         },
         getSidebarMenuActive: function() {
-          const route = this.$route;
-          return getActiveSidebarMenuPath(route);
+          const route = this.$route
+          return getActiveSidebarMenuPath(route)
         },
         getTopMenuActive() {
-          let route = this.$route;
-          return getBelongTopMenuPath(route);
+          let route = this.$route
+          return getBelongTopMenuPath(route)
         }
     },
     mounted() { 
         // console.log(this.permission_routes);
     }
-};
+}
 </script>
 <style lang="scss" scoped>
 @import "~@/assets/css/variables.scss";

@@ -16,12 +16,12 @@
  * Index 框架
  * @author LiQingSong
  */
-import { mapGetters } from 'vuex';
-import AppMain from '../components/AppMain';
-import LayoutIndexLeft from './LayoutIndexLeft';
-import LayoutIndexRightTop from './LayoutIndexRightTop';
-import LayoutIndexRightFooter from './LayoutIndexRightFooter';
-import SiteSettings from '../components/SiteSettnigs';
+import { mapGetters } from 'vuex'
+import AppMain from '../components/AppMain'
+import LayoutIndexLeft from './LayoutIndexLeft'
+import LayoutIndexRightTop from './LayoutIndexRightTop'
+import LayoutIndexRightFooter from './LayoutIndexRightFooter'
+import SiteSettings from '../components/SiteSettnigs'
 export default {
   name: 'LayoutIndex',
   components: {
@@ -38,7 +38,7 @@ export default {
   },
   mounted() { 
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 @import "~@/assets/css/variables.scss";
