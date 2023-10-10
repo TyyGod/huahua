@@ -12,6 +12,7 @@ const getters = {
   msgtotal: state => state.user.msgtotal,
   name: state => state.user.name,
   roles: state => state.user.roles,
-  permission_routes: state => state.permission.routes
+  permission_routes: state => state.permission.routes,
+  permissions: state => state.user.permission
 }
 export default getters

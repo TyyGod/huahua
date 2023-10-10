@@ -41,6 +41,7 @@ export default {
       // only show routes with meta.title
       const matched = route.matched.filter(item => item.meta && item.meta.title)
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+      console.log('this.levelList', this.levelList)
     }
   }
 }

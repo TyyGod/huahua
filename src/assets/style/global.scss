@@ -34,6 +34,159 @@
 .el-pagination {
   font-weight: normal;
 }
+.assets-grey-theme-table {
+  width: 100%;
+  margin-top: 8px;
+  // border: 1px solid #f1e4e4;
+  border-bottom: none;
+
+  &::before {
+    width: 0 !important;
+    height: 0 !important;
+  }
+  &::after {
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .el-table__row{
+    &:hover>td{
+      background: #F7F8FA !important;
+    }
+  }
+  tr{
+    height: 44px !important;
+  }
+
+  .el-table__inner-wrapper::before {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .el-table__border-left-patch {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  th.el-table__cell {
+    background: #F2F3F5 !important;
+    color: #434C5B;
+    font-weight: 500;
+    height: 44px;
+  }
+
+  td.el-table__cell {
+    color: #333;
+  }
+
+  td.el-table__cell,
+  th.el-table__cell.is-leaf {
+    // border-bottom: 0px solid #f1e4e4 !important;
+  }
+
+  .el-table__cell,
+  .el-table__body-wrapper .is-scrolling-left ~ .el-table__fixed {
+    // border-right: 0px solid #f1e4e4 !important;
+  }
+}
+.auth-gray-theme-table {
+  width: 100%;
+  margin-top: 16px;
+  border: 1px solid #f2f2f2;
+  border-bottom: none;
+
+  &::before {
+    height: 0;
+  }
+  &::after {
+    width: 0;
+  }
+
+  &::before {
+    width: 0 !important;
+    height: 0 !important;
+  }
+  &::after {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .el-table__inner-wrapper::before {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .el-table__border-left-patch {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  th.el-table__cell {
+    background: #f4f4f4 !important;
+    color: #181818;
+    font-weight: 500;
+    height: 44px;
+  }
+
+  td.el-table__cell {
+    color: #333;
+  }
+
+  td.el-table__cell,
+  th.el-table__cell.is-leaf {
+    border-bottom: 1px solid #f2f2f2 !important;
+  }
+
+  .el-table__cell,
+  .el-table__body-wrapper .is-scrolling-left ~ .el-table__fixed {
+    border-right: 1px solid #f2f2f2 !important;
+  }
+}
+.el-select{
+  .el-input__inner:focus {
+    box-shadow: 0 0 0 1px #0058F0 inset!important;
+  }
+  .el-select-dropdown__item.selected {
+    color: #0058F0;
+    font-weight: 700;
+  }
+  .select-trigger.el-tooltip__trigger{
+    .is-focus{
+      .el-input__inner{
+        box-shadow: 0 0 0 1px #0058F0 inset!important;
+      }
+    }
+  }
+}
+// input 的placeholder
+.el-input__inner {
+  // letter-spacing:2px;
+  &::placeholder {
+      color: #7D8695 !important;
+  }
+  &::-webkit-input-placeholder {
+      /* WebKit browsers 适配⾕歌 */
+      color: #7D8695 !important;
+  }
+  &:-moz-placeholder {
+      /* Mozilla Firefox 4 to 18 适配⽕狐 */
+      color: #7D8695 !important;
+  }
+  &::-moz-placeholder {
+      /* Mozilla Firefox 19+ 适配⽕狐 */
+      color: #7D8695 !important;
+  }
+  &:-ms-input-placeholder {
+      /* Internet Explorer 10+  适配ie*/
+      color: #7D8695 !important;
+  }
+}
+
+.el-input__suffix-inner{
+  color: #7D8695;
+}
+.el-select__icon{
+  color: #7D8695 !important;
+}
 
 .asr-highlight-em{
   background-color: #FECD1F;
@@ -136,114 +289,9 @@
     border-right: 1px solid #f1e4e4 !important;
   }
 }
-.assets-grey-theme-table {
-  width: 100%;
-  margin-top: 8px;
-  // border: 1px solid #f1e4e4;
-  border-bottom: none;
 
-  &::before {
-    width: 0 !important;
-    height: 0 !important;
-  }
-  &::after {
-    width: 0 !important;
-    height: 0 !important;
-  }
-  .el-table__row{
-    &:hover>td{
-      background: #F7F8FA !important;
-    }
-  }
-  tr{
-    height: 44px !important;
-  }
 
-  .el-table__inner-wrapper::before {
-    width: 0 !important;
-    height: 0 !important;
-  }
 
-  .el-table__border-left-patch {
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  th.el-table__cell {
-    background: #F2F3F5 !important;
-    color: #434C5B;
-    font-weight: 500;
-    height: 44px;
-  }
-
-  td.el-table__cell {
-    color: #333;
-  }
-
-  td.el-table__cell,
-  th.el-table__cell.is-leaf {
-    // border-bottom: 0px solid #f1e4e4 !important;
-  }
-
-  .el-table__cell,
-  .el-table__body-wrapper .is-scrolling-left ~ .el-table__fixed {
-    // border-right: 0px solid #f1e4e4 !important;
-  }
-}
-
-.auth-gray-theme-table {
-  width: 100%;
-  margin-top: 16px;
-  border: 1px solid #f2f2f2;
-  border-bottom: none;
-
-  &::before {
-    height: 0;
-  }
-  &::after {
-    width: 0;
-  }
-
-  &::before {
-    width: 0 !important;
-    height: 0 !important;
-  }
-  &::after {
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .el-table__inner-wrapper::before {
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .el-table__border-left-patch {
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  th.el-table__cell {
-    background: #f4f4f4 !important;
-    color: #181818;
-    font-weight: 500;
-    height: 44px;
-  }
-
-  td.el-table__cell {
-    color: #333;
-  }
-
-  td.el-table__cell,
-  th.el-table__cell.is-leaf {
-    border-bottom: 1px solid #f2f2f2 !important;
-  }
-
-  .el-table__cell,
-  .el-table__body-wrapper .is-scrolling-left ~ .el-table__fixed {
-    border-right: 1px solid #f2f2f2 !important;
-  }
-}
 .auth-gray-theme-table1 {
   width: 100%;
   margin-top: 16px;
@@ -432,52 +480,8 @@
   max-width: 800px;
 }
 
-.el-select{
-  .el-input__inner:focus {
-    box-shadow: 0 0 0 1px #0058F0 inset!important;
-  }
-  .el-select-dropdown__item.selected {
-    color: #0058F0;
-    font-weight: 700;
-  }
-  .select-trigger.el-tooltip__trigger{
-    .is-focus{
-      .el-input__inner{
-        box-shadow: 0 0 0 1px #0058F0 inset!important;
-      }
-    }
-  }
-}
-// input 的placeholder
-.el-input__inner {
-  // letter-spacing:2px;
-  &::placeholder {
-      color: #7D8695 !important;
-  }
-  &::-webkit-input-placeholder {
-      /* WebKit browsers 适配⾕歌 */
-      color: #7D8695 !important;
-  }
-  &:-moz-placeholder {
-      /* Mozilla Firefox 4 to 18 适配⽕狐 */
-      color: #7D8695 !important;
-  }
-  &::-moz-placeholder {
-      /* Mozilla Firefox 19+ 适配⽕狐 */
-      color: #7D8695 !important;
-  }
-  &:-ms-input-placeholder {
-      /* Internet Explorer 10+  适配ie*/
-      color: #7D8695 !important;
-  }
-}
 
-.el-input__suffix-inner{
-  color: #7D8695;
-}
-.el-select__icon{
-  color: #7D8695 !important;
-}
+
 
 // deleteRight 删除提示框公共样式
 .deleteRight{

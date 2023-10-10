@@ -9,7 +9,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import echarts from 'echarts'
-import { debounce } from '@/utlis'
+import { debounce } from '@/utils'
 export default {
   data() {
     return {

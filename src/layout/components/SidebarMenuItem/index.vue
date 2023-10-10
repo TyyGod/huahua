@@ -27,8 +27,8 @@
 <script>
 import path from 'path'
 import { mapGetters } from 'vuex'
-import { isExternal } from '@/utlis/validate'
-import { getBelongTopMenuPath } from '@/utlis/permission'
+import { isExternal } from '@/utils/validate'
+import { getBelongTopMenuPath } from '@/utils/permission'
 import MenuTitle from './MenuTitle'
 import AppLink from '@/components/Link'
 export default {

@@ -39,7 +39,7 @@
 import { mapGetters } from 'vuex'
 import variables from '@/assets/css/variables.scss'
 import SidebarMenuItem from '@/layout/components/SidebarMenuItem'
-import { getBelongTopMenuPath, getActiveSidebarMenuPath } from '@/utlis/permission'
+import { getBelongTopMenuPath, getActiveSidebarMenuPath } from '@/utils/permission'
 export default {
   name: 'LayoutIndexLeft',
   components: {

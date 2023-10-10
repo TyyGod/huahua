@@ -47,6 +47,14 @@ export const constantRoutes = [
     component: () => import('@/views/Login'),
     hidden: true
   },
+  {
+    path: '/test',
+    meta: {
+      title: '测试各个组件'
+    },
+    component: () => import('@/views/testYa'),
+    hidden: true
+  },
 
   {
     path: '/404',

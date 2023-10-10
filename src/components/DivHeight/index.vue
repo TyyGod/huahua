@@ -1,3 +1,4 @@
+<!-- 当前组件-我觉得用处不大 一个div传递高度的盒子 -->
 <template>
   <div class="divheight" :style="{height: height}">
     <slot />

@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-import { debounce } from '@/utlis'
+import { debounce } from '@/utils'
 export default {
   name: 'ScreenTable',
   props: {
@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      tableHeight: 200,
+      tableHeight: null,
       resizeHandler: null
     }
   },
