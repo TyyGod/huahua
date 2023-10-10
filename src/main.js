@@ -18,9 +18,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// 自定义svg icon
-import '@/components/SvgIcon'
-
 // 自定义directive
 import directive from './directive' // directive
 
