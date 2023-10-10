@@ -5,7 +5,7 @@
 import { login, logout, getInfo } from '@/service/user'
 import { getToken, setToken, removeToken } from '@/service/lib/localToken'
 import { resetRouter } from '@/router'
-import { isExternal } from '@/utlis/validate'
+import { isExternal } from '@/utils/validate'
 import { serverLoginUrl, serverLogoutUrl, siteLoginRouter } from '@/settings'
 
 const state = {
