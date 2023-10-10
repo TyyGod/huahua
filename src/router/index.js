@@ -26,6 +26,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 // 引入Index框架
+// 我的建议 home 用作首页路由 layout用作个人中心/设置页面
 import LayoutIndex from '@/layout/Index'
 
 // 引入对应模块路由

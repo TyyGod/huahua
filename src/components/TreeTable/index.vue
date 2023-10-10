@@ -1,3 +1,4 @@
+<!-- 作为一个tree 不建议使用这个 -->
 <template>
   <div ref="treetable" class="tree-table">
     <div class="tree-table-header" :style="{width: getTreeTableTrWidth + 'px', paddingRight: (getTreeTableContentIsScroll ? getScrollbarWidth : 0) + 'px'}">
@@ -37,6 +38,7 @@
               <div class="cell">{{ data[item.label] }}</div>
             </span>
           </template>
+
           <span v-if="operationOpen" class="custom-tree-node-td" :style="{width: getOperWidth + 'px'}">
             <div class="cell">
               <slot :node="node" :data="data">
