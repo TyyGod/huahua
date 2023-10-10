@@ -15,15 +15,15 @@
             router
             @select="handleSelect"
           >
-            <el-menu-item id="parent" ref="parent" index="/home/act">首页</el-menu-item>
-            <el-menu-item index="/home/capability">产品能力</el-menu-item>
+            <el-menu-item  index="/home/act">首页</el-menu-item>
+            <el-menu-item id="parent2" index="/home/capability">产品能力</el-menu-item>
 
-            <el-menu-item index="/home/solution">解决方案</el-menu-item>
-            <el-menu-item index="/home/market">应用服务市场</el-menu-item>
-            <el-menu-item index="/home/developer">开发者</el-menu-item>
-            <el-menu-item index="/home/support">服务支持</el-menu-item>
-            <el-menu-item index="/home/national">了解国能云</el-menu-item>
-            <el-menu-item index="/home/coal">煤炭行业云</el-menu-item>
+            <el-menu-item id="parent" index="/home/solution">解决方案</el-menu-item>
+            <el-menu-item  index="/home/market">应用服务市场</el-menu-item>
+            <el-menu-item  index="/home/developer">开发者</el-menu-item>
+            <el-menu-item  index="/home/support">服务支持</el-menu-item>
+            <el-menu-item  index="/home/national">了解国能云</el-menu-item>
+            <el-menu-item  index="/home/coal">煤炭行业云</el-menu-item>
           </el-menu>
         </div>
         <div class="search">
@@ -34,7 +34,7 @@
           <span @click="skipControlPanel"> 控制台 </span>
         </div>
       </el-header>
-      <el-main style="height:500px">
+      <el-main >
         <router-view />
       </el-main>
       <Footer :last="test" @lastChange="lastChange" />
@@ -47,15 +47,10 @@
       :modal="false"
       :modal-append-to-body="false"
       :with-header="false"
-      size="100%"
+      size="70%"
     >
-      <div>
-        111
-      </div>
+      <DBV :drawerData='drawerData' />
     </el-drawer>
-    <!-- <el-footer class="home_footer" style="height:400px">
-      <div class="home_footer_content" />
-    </el-footer> -->
   </main>
 
 </template>
@@ -66,10 +61,12 @@ import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
 import { debounce } from '@/utils'
 import Footer from './components/Footer.vue'
+import DBV from './components/DrawerBox.vue'
 export default {
   name: 'Index',
   components: {
-    Footer
+    Footer,
+    DBV
   },
   props: {},
   data() {
@@ -80,7 +77,30 @@ export default {
       datevalue1: '',
       activeIndex: '',
       test: 'footer',
-      drawer: false
+      drawer: false,
+      drawerData: [
+        {
+          id: 1, title: '计算', cont: [{ id: 1, title: '弹性....', tid: 1 }, { id: 2, title: '镜像.....', tid: 1 }]
+        },
+        {
+          id: 2, title: '存储', cont: [{ id: 1, title: '弹性2....', tid: 2 }, { id: 2, title: '镜像2.....', tid: 2 }]
+        },
+        {
+          id: 3, title: '数据库', cont: [{ id: 1, title: '弹性3....', tid: 3 }, { id: 2, title: '镜像3.....', tid: 3 }]
+        },
+        {
+          id: 4, title: '网络', cont: [{ id: 1, title: '弹性4....', tid: 4 }, { id: 2, title: '镜像4.....', tid: 4 }]
+        },
+        {
+          id: 5, title: '容器', cont: [{ id: 1, title: '弹性....' }, { id: 2, title: '镜像.....' }]
+        },
+        {
+          id: 6, title: '中间件', cont: [{ id: 1, title: '弹性....' }, { id: 2, title: '镜像.....' }]
+        },
+        {
+          id: 7, title: '安全', cont: [{ id: 1, title: '弹性....' }, { id: 2, title: '镜像.....' }]
+        }
+      ]
     }
   },
   computed: {
@@ -95,24 +115,27 @@ export default {
     $route: {
       handler: function(val, oldVal) {
         this.activeIndex = this.$route.path
+        this.drawer = false
       },
       immediate: true
     }
   },
   mounted() {
     const that = this
-    const url = JSON.parse(localStorage.getItem('url')) || '/home/act'
-    this.activeIndex = url
+    // const url = JSON.parse(localStorage.getItem('url')) || '/home/act'
+    // this.activeIndex = url
 
-    const parent = document.getElementById('parent')
+    const parent = document.querySelector('#parent')
+    const parent2 = document.querySelector('#parent2')
     const el_drawer = document.querySelector('.el-drawer')
-    console.log(el_drawer)
-    // this.$refs.parent.$el.onmouseenter = function() {
-    //   that.drawer = true
-    // }
     parent.onmouseenter = function() {
       that.drawer = true
     }
+    parent2.onmouseenter = function() {
+      that.drawer = true
+    }
+
+    console.log(parent)
     el_drawer.onmouseleave = function() {
       that.drawer = false
     }
@@ -243,4 +266,5 @@ export default {
 .el-menu-item {
   background: red;
 }
+
 </style>
