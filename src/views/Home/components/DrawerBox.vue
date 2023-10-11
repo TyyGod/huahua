@@ -1,16 +1,16 @@
 <template>
-   <div class="drawerBox">
+  <div class="drawerBox">
     <div class="drawerLeft">
       <div class="drawerData_content">
         <div v-for="i in drawerData" :key="i.id" class="drawerData_content_li">
-          <span @click="changeTitle(i)" @class="activeIndex === i.id ? 'activeLic' : 'Lic' ">  {{ i.title }}</span>
+          <span @click="changeTitle(i)" :class="activeIndex === i.id ? 'activeLic' : 'Lic' ">  {{i.title}}</span>
         </div>
       </div>
     </div>
     <div class="drawerRight">
       <div v-for="item in drawerData" :key="item.id">
         <div v-for="i in item.cont" v-show="i.tid === activeIndex" :key="i.id">
-          {{i.title} }
+          {{i.title}}
         </div>
       </div>
     </div>
@@ -22,8 +22,7 @@ export default {
   name: 'DrawerBox',
   props: {
     drawerData: {
-      type: Array,
-      default: () => []
+      type: Array
     }
   },
   data() {
@@ -31,13 +30,12 @@ export default {
       activeIndex: 1
     }
   },
-  mounted() {
-    console.log(this.drawerData)
-  },
+  mounted() {},
   methods: {
     changeTitle: function(item) {
       this.activeIndex = item.id
-    } }
+    } },
+  watch: {}
 }
 </script>
 
@@ -45,7 +43,15 @@ export default {
 .drawerBox{
   width: 100%;
   height: 100%;
-
+  ::-webkit-scrollbar{
+      width: 5px;
+  }
+  ::-webkit-scrollbar-track{
+     background-color: #EFEFEF;
+  }
+  ::-webkit-scrollbar-thumb{
+      background-color: #acacac;
+  }
   .drawerLeft{
     height: 100%;
     width:20%;
@@ -55,7 +61,7 @@ export default {
         height: 80%;
         width: 40%;
         margin-left: 35%;
-        margin-top: 10%;
+        margin-top: 15%;
         // background-color: red;
         overflow-y: auto;
         .drawerData_content_li{
@@ -63,7 +69,8 @@ export default {
             font-size: 15px;
             height: 20px;
             // background-color: red;
-            padding-bottom: 38px;
+            padding-bottom: 30px;
+            padding-top: 30px;
             .Lic{
                 color: black;
             }

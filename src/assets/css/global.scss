@@ -21,7 +21,10 @@ body {
     scrollbar-face-color:#d9d9d9 /* rgba(0,0,0,.6) */;
     scrollbar-track-color:transparent /* rgba(255,255,255,.7) */;
 }
- 
+.icon{
+    width: 1.6em !important;
+    height: 1.6em !important;
+}
  /* 饿了么滚动 重置样式 */
 .default-scrollbar {
     width: 100%;

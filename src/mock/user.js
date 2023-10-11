@@ -34,7 +34,7 @@ export default [
       // mock error
       if (!token) {
         return {
-          code: 201,
+          code: 200,
           msg: '无此账号'
         }
       }

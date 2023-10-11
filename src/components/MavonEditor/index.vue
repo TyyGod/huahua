@@ -13,7 +13,6 @@
     :placeholder="placeholder"
     :editable="editable"
     :code-style="codeStyle"
-    @input="$emit('input', $event)"
     :toolbars-flag="toolbarsFlag"
     :navigation="navigation"
     :short-cut="shortCut"
@@ -24,6 +23,7 @@
     :tab-size="tabSize"
     :toolbars="toolbars"
     :style="style"
+    @input="$emit('input', $event)"
     @imgAdd="$imgAdd"
     @change="change"
   />
