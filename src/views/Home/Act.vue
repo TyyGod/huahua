@@ -37,12 +37,84 @@
           <span>查看全部服务 ></span>
       </div>
       <div class="bottom">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
-    <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-    <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-    <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-  </el-tabs>
+        <div class="bootom_img">
+            <div v-for="(i,index) in img" :key="index" @click="changeTabs(i)">
+              <p class="img"></p>
+              <p :class="activeTitle === i.title ? 'title_active' : 'title' ">{{i.title}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- 解决方案 -->
+    <div class="Solution">
+      <div class="top">
+          <span>丰富、成熟、专业的解决方案</span>
+          <span>查看解决方案 ></span>
+      </div>
+      <div class="bottom">
+          <div class="content">
+              <div :class="hoverItem === i ? 'item_hover' : 'item' " v-for="(i,index) in stdata" :key="index" @mouseenter="changeItem(i)">
+                {{i}}
+              </div>
+              <div class="itemTwo" v-for="(i) in stdata2" :key="i">
+                {{i}}
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- 国能云特色 -->
+    <div class="Characteristic">
+        <div class="top">
+          <span>国能云特色</span>
+          <span>金牌品质与服务，祝您云上无忧，轻松运行</span>
+      </div>
+      <div class="bottom">
+          <div class="content">
+              <div class="item" v-for="i in Cdata" :key="i.id">
+                <p><img :src="i.img" alt=""></p>
+                <p>{{i.title}}</p>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- 合规认证 -->
+    <div class="Authentication">
+       <div class="top">
+          <span>合规认证</span>
+          <span>建设安全可靠的云生态环境，提供值得依赖的优质云服</span>
+      </div>
+      <div class="bottom">
+        <div class="content">
+        </div>
+      </div>
+    </div>
+    <!-- 最新活动 -->
+    <div class="Activity">
+      <div class="top">
+          <span>最新活动</span>
+          <span>汇聚云上精彩，共享美好时光</span>
+      </div>
+      <div class="bottom">
+        <div class="content">
+            <el-carousel height="300px"  :interval='5000'>
+            <el-carousel-item v-for="item in 4" :key="item" >
+             <h3 class="small">{{ item }}</h3>
+            </el-carousel-item>
+           </el-carousel>
+        </div>
+      </div>
+    </div>
+    <!-- 服务 -->
+    <div class="Service">
+      <div class="top">
+          <span>全方位的无忧专属上云服务</span>
+      </div>
+      <div class="bottom">
+        <div class="content">
+          <div class="item" v-for="i in sdata" :key="i">
+            {{i}}
+          </div>
+        </div>
       </div>
     </div>
     <!-- 右侧悬浮框 -->
@@ -71,13 +143,56 @@ export default {
   props: {},
   data() {
     return {
-      activeName: 'second'
+      activeName: 'first',
+      activeTitle: '研发使能',
+      hoverItem: 1,
+      img: [
+        { title: '研发使能' },
+        { title: '安全' },
+        { title: '计算' },
+        { title: '微服务' },
+        { title: '区块链' },
+        { title: '物联网' },
+        { title: '数据库' }
+      ],
+      stdata: [1, 2, 3, 4, 5],
+      stdata2: [7, 8, 9, 10, 11],
+      sdata: ['a', 'b', 'c', 'd'],
+      Cdata: [
+        {
+          id: 1,
+          title: '标题标题标题',
+          img: 'https://img1.baidu.com/it/u=1138529614,2217342001&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800'
+        },
+        {
+          id: 2,
+          title: '标题标题标题',
+          img: 'https://img1.baidu.com/it/u=1138529614,2217342001&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800'
+        },
+        {
+          id: 3,
+          title: '标题标题标题',
+          img: 'https://img1.baidu.com/it/u=1138529614,2217342001&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800'
+        },
+        {
+          id: 4,
+          title: '标题标题标题',
+          img: 'https://img1.baidu.com/it/u=1138529614,2217342001&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800'
+        }
+      ]
     }
   },
   mounted() {},
   methods: {
     handleClick(tab, event) {
       console.log(tab, event)
+    },
+    changeTabs(item) {
+      console.log(this.activeTitle)
+      this.activeTitle = item.title
+    },
+    changeItem(item) {
+      this.hoverItem = item
     }
   }
 }
@@ -85,7 +200,6 @@ export default {
 
 <style lang="less">
 .act {
-  height: 1800px;
   //轮播图样式
   el-carousel__item h3 {
     color: #475669;
@@ -102,23 +216,309 @@ export default {
     background-color: #d3dce6;
   }
 }
-.el-carousel__button {
+.act {
+  .block{
+    position: relative;
+    .el-carousel__button {
   width: 7.5px;
   height: 7.5px;
   border-radius: 50%;
   background: #ac2807;
 }
-.act {
-  .block{
-    position: relative;
   }
   .ComputingServices{
     width: 100%;
     height: 600px;
     margin-top: 50px;
-    // background-color: red;
+    .el-tabs__nav-wrap::after{
+      background-color: transparent;
+    }
+    .el-tabs__header{
+      display: flex;
+      justify-content: space-around;
+      width: 90%;
+      margin-left: 5%;
+    }
+    .el-tabs__item{
+      width: 100px;
+    }
+    .el-tabs__item.is-active {
+      color: #ac2807;
+    }
+     .el-tabs__item:hover {
+      color: #ac2807;
+    }
+    .el-tabs__active-bar{
+      background-color: #ac2807;
+    }
     .top{
        cursor: pointer;
+      height: 15%;
+      width: 100%;
+      text-align: center;
+      span:nth-child(1){
+        font-size: 30px;
+        display: block;
+        width: 100%;
+        float: left;
+      }
+      span:nth-child(2){
+        margin-top: 20px;
+        width: 100%;
+        display: block;
+        float: left;
+        font-size: 13px;
+        color: #ac2807 !important;
+        font-weight: bold !important;
+      }
+    }
+    .bottom{
+      height: 80%;
+      width:100%;
+      margin-top: 20px;
+      .bootom_img{
+        cursor: pointer;
+        height: 100px;
+        width: 90%;
+        margin-left: 5%;
+        // background-color: red;
+        display: flex;
+        justify-content: space-around;
+        .img{
+          height: 100px;
+          width: 100px;
+         border: 1px solid black;
+        }
+        .title{
+          height: 30px;
+          text-align: center;
+          font-size: 13px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+        .title_active{
+          height: 30px;
+          border-bottom: 5px #ac2807 solid;
+          text-align: center;
+          font-size: 13px;
+          font-weight: bold;
+          margin-top: 10px;
+          animation: title 1s;
+        }
+        @keyframes title {
+          0%{
+           opacity: 0;
+          }
+          100%{
+           opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .Solution{
+    width: 100%;
+    height: 650px;
+    margin-top: 100px;
+    .top{
+      cursor: pointer;
+      height: 15%;
+      width: 100%;
+      text-align: center;
+      span:nth-child(1){
+        font-size: 30px;
+        display: block;
+        width: 100%;
+        float: left;
+      }
+      span:nth-child(2){
+        margin-top: 20px;
+        width: 100%;
+        display: block;
+        float: left;
+        font-size: 13px;
+        color: #ac2807 !important;
+        font-weight: bold !important;
+      }
+    }
+     .bottom{
+      height: 80%;
+      width:100%;
+      margin-top: 20px;
+      .content{
+        width: 90%;
+        height: 100%;
+        margin-left: 5%;
+        // background: red;
+        .item{
+          float: left;
+          height: 75%;
+          width: 13.37%;
+          background: #e2e5e3;
+          margin-right: 1.5%;
+          border-radius: 5%;
+        }
+        .itemTwo{
+          margin-top: 20px;
+          float: left;
+          height: 25%;
+          width: 18.9%;
+          margin-right: 1%;
+         background-color: #e5f3ff;
+background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
+        }
+        .item_hover{
+          float: left;
+          height: 75%;
+          width: 39%;
+          background: #e2e5e3;
+          margin-right: 1.5%;
+          border-radius: 5%;
+        }
+      }
+     }
+  }
+  .Characteristic{
+    width: 100%;
+    height: 300px;
+    margin-top: 100px;
+     .top{
+      cursor: pointer;
+      height: 30%;
+      width: 100%;
+      text-align: center;
+      span:nth-child(1){
+        font-size: 35px;
+        display: block;
+        width: 100%;
+        float: left;
+      }
+      span:nth-child(2){
+        margin-top: 20px;
+        width: 100%;
+        display: block;
+        float: left;
+        font-size: 14px;
+        color: #525252;
+      }
+    }
+    .bottom{
+      height: 70%;
+      width:100%;
+      margin-top: 20px;
+      .content{
+        width: 90%;
+        height: 100%;
+        margin-left: 5%;
+        .item{
+          float: left;
+          height: 100%;
+          width: 23%;
+          margin-right: 2%;
+          p:nth-child(1){
+            height: 80%;
+            width: 100%;
+            img{
+              height: 100%;
+              width: 100%;
+            }
+          }
+           p:nth-child(2){
+             font-size: 15px;
+             display: flex;
+            height: 20%;
+            width: 100%;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  .Authentication{
+     width: 100%;
+    height: 400px;
+    margin-top: 100px;
+     .top{
+      cursor: pointer;
+      height: 25%;
+      width: 100%;
+      text-align: center;
+      span:nth-child(1){
+        font-size: 35px;
+        display: block;
+        width: 100%;
+        float: left;
+      }
+      span:nth-child(2){
+        margin-top: 20px;
+        width: 100%;
+        display: block;
+        float: left;
+        font-size: 14px;
+        color: #525252;
+      }
+    }
+    .bottom{
+      height: 75%;
+      width:100%;
+      margin-top: 20px;
+      .content{
+        width: 95%;
+        height: 100%;
+        margin-left: 2.5%;
+        background: white;
+      }
+    }
+  }
+  .Activity{
+    width: 100%;
+    height: 400px;
+    margin-top: 100px;
+    .top{
+      cursor: pointer;
+      height: 25%;
+      width: 100%;
+      text-align: center;
+      span:nth-child(1){
+        font-size: 35px;
+        display: block;
+        width: 100%;
+        float: left;
+      }
+      span:nth-child(2){
+        margin-top: 20px;
+        width: 100%;
+        display: block;
+        float: left;
+        font-size: 14px;
+        color: #525252;
+      }
+    }
+    .bottom{
+      height: 75%;
+      width:100%;
+      margin-top: 20px;
+      .content{
+        width: 82%;
+        height: 100%;
+        margin-left: 9%;
+        background: red;
+      }
+    }
+    .el-carousel__button {
+      width: 7.5px;
+      height: 7.5px;
+      border-radius: 50%;
+      background: black;
+    }
+  }
+  .Service{
+    width: 100%;
+    height: 450px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    .top{
+      cursor: pointer;
       height: 20%;
       width: 100%;
       text-align: center;
@@ -129,19 +529,34 @@ export default {
         float: left;
       }
       span:nth-child(2){
-        margin-top: 15px;
+        margin-top: 20px;
         width: 100%;
         display: block;
         float: left;
-        color: #ac2807 !important;
-        font-weight: bold !important;
+        font-size: 14px;
+        color: #525252;
       }
     }
     .bottom{
       height: 80%;
-      width:100%
+      width:100%;
+      margin-top: 20px;
+      .content{
+        height: 100%;
+        width: 88%;
+        margin-left: 6%;
+        display: flex;
+        justify-content: space-around;
+        .item{
+          width: 24%;
+          height: 100%;
+          background: white;
+          border-radius: 5%;
+        }
+      }
     }
   }
+  //登录
   .loginBox {
     height: 400px;
     width: 350px;

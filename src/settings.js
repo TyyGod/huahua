@@ -6,7 +6,7 @@
 /**
  * 站点名称
  */
-export const siteTitle = 'ADMIN-ELEMENT-VUE'
+export const siteTitle = ''
 
 /**
  * 是否固定右侧头部(默认配置)

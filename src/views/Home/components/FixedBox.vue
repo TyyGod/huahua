@@ -59,7 +59,7 @@ export default {
     console.log(_this.ToolTitle)
     window.addEventListener('scroll', function() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop > scroll_height / 3) {
+      if (scrollTop > 720) {
         _this.backTop = true
       } else {
         _this.backTop = false
@@ -69,17 +69,6 @@ export default {
   methods: {
     backToTop: function() {
       document.body.scrollTop = document.documentElement.scrollTop = 0
-      // let timer = null
-      // let onTop = document.documentElement.scrollTop
-      // if (document.documentElement.scrollTop > 0) {
-      //   timer = setInterval(() => {
-      //     onTop = document.documentElement.scrollTop -= 10
-      //     console.log(document.documentElement.scrollTop)
-      //   }, 100)
-      // } else if (onTop === 0) {
-      //   console.log(timer)
-      //   clearInterval(timer)
-      // }
     }
   }
 }
@@ -103,15 +92,15 @@ export default {
 .backtop{
     cursor: pointer;
     position:fixed;
-    top: 85%;
-    height: 45px;
-    width: 45px;
+    top: 88%;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid #b6b6b6;
+    border: 2px solid #a8a8a8;
     right: 1.5%;
     text-align: center;
-    line-height: 45px;
+    line-height: 50px;
     font-size: 12px;
     animation: fadein 3s;
 }
@@ -119,9 +108,9 @@ export default {
     position:fixed;
     top: 65%;
     right: 1.5%;
-    height: 120px;
-    width: 45px;
-    border: 1px solid #b6b6b6;
+    height: 150px;
+    width: 50px;
+    border: 2px solid #a8a8a8;
     border-top-color: 1px white;
     border-radius: 50px;
     z-index: 5;
@@ -135,13 +124,12 @@ export default {
         float: left;
         .top{
           cursor: pointer;
-            height: 30%;
+            height: 49%;
             width: 100%;
             // background-color: red;
             text-align: center;
-            line-height: 35px;
+            line-height: 50px;
              font-size: 14px;
-             margin-bottom: 45%;
              margin-top: 10%;
              img{
                  width: 100%;
@@ -156,13 +144,13 @@ export default {
         }
         .bottom{
           cursor: pointer;
-            height: 30%;
+            height: 49%;
             width: 100%;
             // background-color: blue;
             // color: white;
             text-align: center;
             margin-top: 45%;
-            line-height: 30px;
+            line-height: 40px;
             font-size: 14px;
              img{
                  width: 100%;

@@ -179,11 +179,10 @@ export default {
       //   .catch((_) => {});
     },
     skipDocument() {
-      this.$router.push('/home/document')
-      this.activeIndex = '/home/act'
+      window.open('http://localhost:8081/#/home/document')
     },
     skipControlPanel() {
-      this.$router.push('/control')
+      window.open('http://localhost:8081/#/control')
     }
   }
 }
@@ -228,15 +227,12 @@ export default {
   justify-content: center;
 }
 .main {
-  // line-height: 500px;
   flex-grow: 3;
-  // background: yellow;
   text-align: center;
-  line-height: 50%;
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
-  line-height: 60px;
+  line-height: 70px;
   font-size: 14px;
   color: rgb(144, 147, 153);
   span:nth-child(2) {

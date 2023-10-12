@@ -22,7 +22,7 @@ router.beforeEach(async(to, from, next) => {
   NProgress.start()
 
   // 设置网页 title
-  document.title = (to.meta && to.meta.title) + ' - ' + siteTitle
+  document.title = (to.meta && to.meta.title) + siteTitle
 
   if (whiteList.indexOf(to.path) !== -1) {
     // 在白名单中，直接进入
