@@ -15,9 +15,7 @@ export default {
 
     }
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
 
   }

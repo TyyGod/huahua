@@ -3,12 +3,31 @@
   <div class="act">
     <!-- banner -->
     <div class="block">
-      <el-carousel height="500px" :interval='5000'>
+      <el-carousel height="400px" :interval='5000'>
         <el-carousel-item v-for="item in 4" :key="item" >
           <h3 class="small">{{ item }}</h3>
         </el-carousel-item>
       </el-carousel>
-      <div class="loginBox">
+      <div class="bannerFooter">
+        <div>
+          <p>新用户特惠</p>
+          <p>云服务器9.9元，域名首年1元</p>
+        </div>
+        <div>
+          <p>免费试用</p>
+          <p>领取1000元免费试用资金</p>
+        </div>
+        <div>
+          <p>热门产品</p>
+          <p>了解更多煤炭行业云产品服务</p>
+        </div>
+        <div>
+          <p>最新动态</p>
+          <p>点击获取咨询、案例与报告</p>
+        </div>
+      </div>
+      <!-- 登录框 -->
+      <!-- <div class="loginBox">
         <div class="loginBox_top">
           <div class="img">
             <img
@@ -28,7 +47,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- 云计算服务 -->
     <div class="ComputingServices">
@@ -38,10 +57,18 @@
       </div>
       <div class="bottom">
         <div class="bootom_img">
-            <div v-for="(i,index) in img" :key="index" @click="changeTabs(i)">
+            <!-- <div v-for="(i,index) in img" :key="index" @click="changeTabs(i)">
               <p class="img"></p>
               <p :class="activeTitle === i.title ? 'title_active' : 'title' ">{{i.title}}</p>
+            </div> -->
+            <div class="item">
+              <p v-for="(i,index) in img" :key="index" :class="activeTitle === i.title ? 'p_active' : 'p'" @click="changeTabs(i)">
+                <span style="marginLeft:10px"> {{i.title}}</span>
+              </p>
             </div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
         </div>
       </div>
     </div>
@@ -53,8 +80,12 @@
       </div>
       <div class="bottom">
           <div class="content">
-              <div :class="hoverItem === i ? 'item_hover' : 'item' " v-for="(i,index) in stdata" :key="index" @mouseenter="changeItem(i)">
-                {{i}}
+              <div style="height:75%;width:100%">
+                <div :class="hoverItem === i.id ? 'item_hover' : 'item' " id="hoveritem" v-for="(i,index) in stdata" :key="index" @mouseenter="changeItem(i.id)" @mouseleave="leaveItem">
+              <div style="padding:30px">
+                 {{i.title}}
+              </div>
+              </div>
               </div>
               <div class="itemTwo" v-for="(i) in stdata2" :key="i">
                 {{i}}
@@ -62,11 +93,34 @@
           </div>
       </div>
     </div>
-    <!-- 国能云特色 -->
+    <!-- 行业云赋能的产业新动力 -->
+    <div class="Activity">
+      <div class="top">
+          <span>行业云赋能的产业新动力</span>
+      </div>
+      <div class="bottom">
+        <div class="content">
+            <el-carousel height="300px" type="card"  :interval='5000'>
+            <el-carousel-item v-for="item in 4" :key="item" >
+             <h3 class="small">{{ item }}</h3>
+            </el-carousel-item>
+           </el-carousel>
+           <div class="more">
+             <div class="more_top">
+                <span></span><span>更多合作伙伴</span><span></span>
+             </div>
+             <div class="more_footer">
+
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 了解煤炭行业云最新动态 -->
     <div class="Characteristic">
         <div class="top">
-          <span>国能云特色</span>
-          <span>金牌品质与服务，祝您云上无忧，轻松运行</span>
+          <span>了解煤炭行业云最新动态</span>
+          <span>查看更多动态 ></span>
       </div>
       <div class="bottom">
           <div class="content">
@@ -78,7 +132,7 @@
       </div>
     </div>
     <!-- 合规认证 -->
-    <div class="Authentication">
+    <!-- <div class="Authentication">
        <div class="top">
           <span>合规认证</span>
           <span>建设安全可靠的云生态环境，提供值得依赖的优质云服</span>
@@ -87,23 +141,7 @@
         <div class="content">
         </div>
       </div>
-    </div>
-    <!-- 最新活动 -->
-    <div class="Activity">
-      <div class="top">
-          <span>最新活动</span>
-          <span>汇聚云上精彩，共享美好时光</span>
-      </div>
-      <div class="bottom">
-        <div class="content">
-            <el-carousel height="300px"  :interval='5000'>
-            <el-carousel-item v-for="item in 4" :key="item" >
-             <h3 class="small">{{ item }}</h3>
-            </el-carousel-item>
-           </el-carousel>
-        </div>
-      </div>
-    </div>
+    </div> -->
     <!-- 服务 -->
     <div class="Service">
       <div class="top">
@@ -111,8 +149,37 @@
       </div>
       <div class="bottom">
         <div class="content">
-          <div class="item" v-for="i in sdata" :key="i">
-            {{i}}
+          <div class="item">
+            <div class="i">
+              <p>在线服务</p>
+              <p>7*24小时客服，为您推荐最佳的解决方案</p>
+              <p>智能客服<svg style="float:right;marginTop:-2.5px;marginLeft:-2px" t="1697439870919" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7573" width="200" height="200"><path d="M681.322 538.268c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.978 4.312-4.31 6.979-10.264 6.979-16.841 0-6.577-2.666-12.532-6.978-16.84l-345.758-345.736c-9.302-9.302-24.375-9.302-33.681 0s-9.302 24.375 0 33.681l345.755 345.741c4.298 4.308 10.241 6.974 16.808 6.974 0.013 0 0.025 0 0.038 0z" fill="#ac2807" p-id="7574"></path><path d="M336.843 882.748c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.977l344.478-344.481c9.302-9.302 9.302-24.375 0-33.681s-24.375-9.302-33.681 0l-344.477 344.483c-4.313 4.31-6.982 10.265-6.982 16.843 0 13.15 10.66 23.811 23.812 23.811 0.005 0 0.008 0 0.011 0z" fill="#ac2807" p-id="7575"></path></svg></p>
+              <p>人工客服<svg style="float:right;marginTop:-2.5px;marginLeft:-2px" t="1697439870919" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7573" width="200" height="200"><path d="M681.322 538.268c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.978 4.312-4.31 6.979-10.264 6.979-16.841 0-6.577-2.666-12.532-6.978-16.84l-345.758-345.736c-9.302-9.302-24.375-9.302-33.681 0s-9.302 24.375 0 33.681l345.755 345.741c4.298 4.308 10.241 6.974 16.808 6.974 0.013 0 0.025 0 0.038 0z" fill="#ac2807" p-id="7574"></path><path d="M336.843 882.748c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.977l344.478-344.481c9.302-9.302 9.302-24.375 0-33.681s-24.375-9.302-33.681 0l-344.477 344.483c-4.313 4.31-6.982 10.265-6.982 16.843 0 13.15 10.66 23.811 23.812 23.811 0.005 0 0.008 0 0.011 0z" fill="#ac2807" p-id="7575"></path></svg></p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="i">
+              <p>工单服务</p>
+              <p>技术工程师7*24小时竭诚为您提供专业为技术支持</p>
+              <p>提交工单<svg style="float:right;marginTop:-2.5px;marginLeft:-2px" t="1697439870919" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7573" width="200" height="200"><path d="M681.322 538.268c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.978 4.312-4.31 6.979-10.264 6.979-16.841 0-6.577-2.666-12.532-6.978-16.84l-345.758-345.736c-9.302-9.302-24.375-9.302-33.681 0s-9.302 24.375 0 33.681l345.755 345.741c4.298 4.308 10.241 6.974 16.808 6.974 0.013 0 0.025 0 0.038 0z" fill="#ac2807" p-id="7574"></path><path d="M336.843 882.748c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.977l344.478-344.481c9.302-9.302 9.302-24.375 0-33.681s-24.375-9.302-33.681 0l-344.477 344.483c-4.313 4.31-6.982 10.265-6.982 16.843 0 13.15 10.66 23.811 23.812 23.811 0.005 0 0.008 0 0.011 0z" fill="#ac2807" p-id="7575"></path></svg></p>
+              <p>我的工单<svg style="float:right;marginTop:-2.5px;marginLeft:-2px" t="1697439870919" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7573" width="200" height="200"><path d="M681.322 538.268c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.978 4.312-4.31 6.979-10.264 6.979-16.841 0-6.577-2.666-12.532-6.978-16.84l-345.758-345.736c-9.302-9.302-24.375-9.302-33.681 0s-9.302 24.375 0 33.681l345.755 345.741c4.298 4.308 10.241 6.974 16.808 6.974 0.013 0 0.025 0 0.038 0z" fill="#ac2807" p-id="7574"></path><path d="M336.843 882.748c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.977l344.478-344.481c9.302-9.302 9.302-24.375 0-33.681s-24.375-9.302-33.681 0l-344.477 344.483c-4.313 4.31-6.982 10.265-6.982 16.843 0 13.15 10.66 23.811 23.812 23.811 0.005 0 0.008 0 0.011 0z" fill="#ac2807" p-id="7575"></path></svg></p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="i">
+              <p>服务热线</p>
+              <p>7*24小时响应您的需求，让您无后顾之忧</p>
+              <p style="color:black;fontSize:14px">支持热线 :  <span style="color:#ac2807">4031-32413098</span></p>
+              <p style="color:black;fontSize:14px">售前电话 :  <span style="color:#ac2807">0831-29922849</span></p>
+
+            </div>
+          </div>
+          <div class="item">
+            <div class="i">
+              <p>建议反馈</p>
+              <p>感谢您对我们的支持，您的宝贵建议是我们前行的动力</p>
+              <p>在线反馈<svg style="float:right;marginTop:-2.5px;marginLeft:-2px" t="1697439870919" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7573" width="200" height="200"><path d="M681.322 538.268c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.978 4.312-4.31 6.979-10.264 6.979-16.841 0-6.577-2.666-12.532-6.978-16.84l-345.758-345.736c-9.302-9.302-24.375-9.302-33.681 0s-9.302 24.375 0 33.681l345.755 345.741c4.298 4.308 10.241 6.974 16.808 6.974 0.013 0 0.025 0 0.038 0z" fill="#ac2807" p-id="7574"></path><path d="M336.843 882.748c0.011 0 0.025 0 0.040 0 6.564 0 12.506-2.667 16.801-6.977l344.478-344.481c9.302-9.302 9.302-24.375 0-33.681s-24.375-9.302-33.681 0l-344.477 344.483c-4.313 4.31-6.982 10.265-6.982 16.843 0 13.15 10.66 23.811 23.812 23.811 0.005 0 0.008 0 0.011 0z" fill="#ac2807" p-id="7575"></path></svg></p>
+            </div>
           </div>
         </div>
       </div>
@@ -144,20 +211,43 @@ export default {
   data() {
     return {
       activeName: 'first',
-      activeTitle: '研发使能',
+      activeTitle: '推荐产品',
       hoverItem: 1,
+      timer: null,
       img: [
-        { title: '研发使能' },
-        { title: '安全' },
+        { title: '推荐产品' },
         { title: '计算' },
-        { title: '微服务' },
-        { title: '区块链' },
-        { title: '物联网' },
-        { title: '数据库' }
+        { title: '存储' },
+        { title: '网络' },
+        { title: '数据库' },
+        { title: '中间件' },
+        { title: '安全' },
+        { title: 'CDN与加速' },
+        { title: '数据中台' }
       ],
-      stdata: [1, 2, 3, 4, 5],
+      stdata: [
+        {
+          id: 1,
+          title: '企业上云'
+        },
+        {
+          id: 2,
+          title: '混合云'
+        },
+        {
+          id: 3,
+          title: '云网融合'
+        },
+        {
+          id: 4,
+          title: '工业'
+        },
+        {
+          id: 5,
+          title: '数据库'
+        }
+      ],
       stdata2: [7, 8, 9, 10, 11],
-      sdata: ['a', 'b', 'c', 'd'],
       Cdata: [
         {
           id: 1,
@@ -188,17 +278,28 @@ export default {
       console.log(tab, event)
     },
     changeTabs(item) {
-      console.log(this.activeTitle)
       this.activeTitle = item.title
     },
+    // 滑过
     changeItem(item) {
-      this.hoverItem = item
+      this.timer = setTimeout(() => {
+        this.hoverItem = item
+      }, 100)
+    },
+    // 滑出
+    leaveItem() {
+      // 鼠标停留不超过0.5秒不执行 changeitem
+      clearTimeout(this.timer)
     }
   }
 }
 </script>
 
 <style lang="less">
+.icon{
+    width: 1.5em;
+    height: 1.5em;
+  }
 .act {
   //轮播图样式
   el-carousel__item h3 {
@@ -219,6 +320,27 @@ export default {
 .act {
   .block{
     position: relative;
+    .bannerFooter{
+      width: 100%;
+      height: 100px;
+      background: white;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+        div{
+          flex-grow: 2.5;
+          p:nth-child(1){
+            align-items: center;
+            font-size: 15px;
+            font-weight: bold;
+          }
+          p:nth-child(2){
+            margin-top: 10px;
+            font-size: 13px;
+          }
+        }
+    }
     .el-carousel__button {
   width: 7.5px;
   height: 7.5px;
@@ -228,7 +350,7 @@ export default {
   }
   .ComputingServices{
     width: 100%;
-    height: 600px;
+    height: 750px;
     margin-top: 50px;
     .el-tabs__nav-wrap::after{
       background-color: transparent;
@@ -253,7 +375,7 @@ export default {
     }
     .top{
        cursor: pointer;
-      height: 15%;
+      height: 10%;
       width: 100%;
       text-align: center;
       span:nth-child(1){
@@ -275,15 +397,52 @@ export default {
     .bottom{
       height: 80%;
       width:100%;
-      margin-top: 20px;
+      margin-top: 30px;
       .bootom_img{
         cursor: pointer;
-        height: 100px;
+        height: 100%;
         width: 90%;
         margin-left: 5%;
-        // background-color: red;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        div:nth-child(1){
+          width: 23%;
+          height: 100%;
+          .p{
+            width: 100%;
+            height: 55px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: background 0.1s linear, color 0.1s linear;
+          }
+          .p_active{
+            text-align: center;
+            width: 100%;
+            height: 55px;
+            border-radius: 10px;
+            display: flex;
+            color: white;
+            background: #ac2807;
+            align-items: center;
+            transition: background 0.3s linear, color 0.3s linear;
+          }
+        }
+        div:nth-child(2){
+          background: coral;
+          width: 23%;
+          height: 100%;
+        }
+        div:nth-child(3){
+          background: coral;
+          width: 23%;
+          height: 100%;
+        }
+        div:nth-child(4){
+          background: coral;
+          width: 23%;
+          height: 100%;
+        }
         .img{
           height: 100px;
           width: 100px;
@@ -319,7 +478,7 @@ export default {
   .Solution{
     width: 100%;
     height: 650px;
-    margin-top: 100px;
+    margin-top: 20px;
     .top{
       cursor: pointer;
       height: 15%;
@@ -349,14 +508,35 @@ export default {
         width: 90%;
         height: 100%;
         margin-left: 5%;
-        // background: red;
         .item{
           float: left;
-          height: 75%;
+          height: 100%;
           width: 13.37%;
-          background: #e2e5e3;
+          color: white;
+          background-image: url(https://img1.baidu.com/it/u=1890390320,3399874998&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800);
+          font-weight: bold;
           margin-right: 1.5%;
           border-radius: 5%;
+          background-position: 100%;
+          transition: width 0.2s linear, color 0.2s linear, background 0.2s linear;
+          font-size: 18px;
+        }
+        // .item:hover{
+        //   width: 39%;
+        // }
+        .item_hover{
+          float: left;
+          height: 100%;
+          width: 39%;
+          font-weight: bold;
+          background-image: url(https://img1.baidu.com/it/u=1890390320,3399874998&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800);
+          background-repeat: no-repeat;
+          background-position: 100%;
+          margin-right: 1.5%;
+          border-radius: 5%;
+          transition: width 0.2s linear, color 0.2s linear,background 0.2s linear;
+          font-size: 18px;
+          color: black;
         }
         .itemTwo{
           margin-top: 20px;
@@ -364,16 +544,8 @@ export default {
           height: 25%;
           width: 18.9%;
           margin-right: 1%;
-         background-color: #e5f3ff;
-background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
-        }
-        .item_hover{
-          float: left;
-          height: 75%;
-          width: 39%;
-          background: #e2e5e3;
-          margin-right: 1.5%;
-          border-radius: 5%;
+          background-color: #e5f3ff;
+          background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
         }
       }
      }
@@ -399,7 +571,7 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
         display: block;
         float: left;
         font-size: 14px;
-        color: #525252;
+        color: #ac2807;
       }
     }
     .bottom{
@@ -410,11 +582,11 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
         width: 90%;
         height: 100%;
         margin-left: 5%;
+        display: flex;
+         justify-content: space-between;
         .item{
-          float: left;
           height: 100%;
-          width: 23%;
-          margin-right: 2%;
+          width: 22%;
           p:nth-child(1){
             height: 80%;
             width: 100%;
@@ -472,11 +644,14 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
   }
   .Activity{
     width: 100%;
-    height: 400px;
+    height: 800px;
     margin-top: 100px;
+    .el-carousel__indicators--outside{
+      display: none;
+    }
     .top{
       cursor: pointer;
-      height: 25%;
+      height: 10%;
       width: 100%;
       text-align: center;
       span:nth-child(1){
@@ -498,13 +673,53 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
       height: 75%;
       width:100%;
       margin-top: 20px;
-      .content{
-        width: 82%;
-        height: 100%;
-        margin-left: 9%;
+    .more{
+      margin-top: 50px;
+      height: 400px;
+      width: 100%;
+      // background: red;
+      .more_top{
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-align: center;
+        height: 15%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        span:nth-child(1){
+          display: inline-block;
+          height: 1px;
+          width: 200px;
+          background: rgb(190, 190, 190);
+          margin-right: 30px;
+          margin-top: 20px;
+        }
+        span:nth-child(2){
+          display: inline-block;
+          margin-top: 10px;
+        }
+        span:nth-child(3){
+          display: inline-block;
+          height: 1px;
+          width: 200px;
+          background: rgb(190, 190, 190);
+          margin-left: 30px;
+          margin-top: 20px;
+        }
+      }
+      .more_footer{
+        height: 85%;
+        width: 100%;
         background: red;
       }
     }
+      .content{
+        width: 90%;
+        height: 60%;
+        margin-left: 5%;
+      }
+    }
+
     .el-carousel__button {
       width: 7.5px;
       height: 7.5px;
@@ -514,7 +729,7 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
   }
   .Service{
     width: 100%;
-    height: 450px;
+    height: 400px;
     margin-top: 100px;
     margin-bottom: 100px;
     .top{
@@ -543,8 +758,8 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
       margin-top: 20px;
       .content{
         height: 100%;
-        width: 88%;
-        margin-left: 6%;
+        width: 86%;
+        margin-left: 7%;
         display: flex;
         justify-content: space-around;
         .item{
@@ -552,6 +767,39 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
           height: 100%;
           background: white;
           border-radius: 5%;
+          .i{
+            position: relative;
+            height: 70%;
+            width: 85%;
+            margin-left: 7.5%;
+            // background: red;
+            margin-top: 15%;
+            p:nth-child(1){
+              font-size: 16px;
+              font-weight: bold;
+              margin-top: 60px;
+            }
+             p:nth-child(2){
+              font-size: 13px;
+              margin-top: 15px;
+              line-height: 20px;
+              color: rgb(160, 160, 160);
+            }
+             p:nth-child(3){
+              position: absolute;
+              top: 100px;
+               font-size: 15px;
+              color: #ac2807;
+              float: left;
+            }
+            p:nth-child(4){
+              font-size: 15px;
+              position: absolute;
+              top: 150px;
+              color: #ac2807;
+              float: left;
+            }
+          }
         }
       }
     }
@@ -583,7 +831,7 @@ background-image: linear-gradient(90deg, #e5f3ff 35%, #ffffff 100%);
       }
       button {
         width: 80px;
-        background: #ac2807;
+        background: #17A6FA;
         height: 30px;
         font-size: 14px;
         color: white;

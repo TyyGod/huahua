@@ -1,10 +1,13 @@
 <template>
   <div class="login">
-    <div class="form">
-      <h1 class="title">
-        Sign in to Admin
-      </h1>
-      <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="0" size="medium">
+      <div class="Login_left">
+
+      </div>
+      <div class="Login_right">
+        <div class="content">
+           <p>欢迎来到煤炭行业云</p>
+           <div style="marginTop:50px">
+              <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="0" size="medium" >
         <el-form-item label="" prop="username">
           <el-input v-model.trim="ruleForm.username" autocomplete="off" placeholder="请输入账号" @keyup.enter.native="submitForm('ruleForm')">
             <i slot="prefix" class="el-input__icon el-icon-user" />
@@ -16,16 +19,19 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button class="submit" type="primary" :loading="loading" @click="submitForm('ruleForm')">登录</el-button>
+          <el-button  class="submit" type="primary" :loading="loading" @click="submitForm('ruleForm')">登录</el-button>
         </el-form-item>
       </el-form>
-
-    </div>
+           </div>
+        </div>
+      </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'Login',
+  props: {},
   data() {
     return {
       loading: false,
@@ -46,6 +52,7 @@ export default {
       otherQuery: {}
     }
   },
+  mounted() {},
   watch: {
     $route: {
       handler: function(route) {
@@ -92,37 +99,36 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.login {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  min-height: 500px;
-  overflow: auto;
-  background-image: url("../../assets/images/bg-smooth.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  align-items: center;
-  .form{
-      flex: none;
-      width: 320px;
-      padding: 60px;
-      margin: 0 auto;
-      border-radius: 4px;
-      background-color: rgba($color: #FFFFFF, $alpha: 0.2);
-      .title{
-        font-weight: 300;
-        margin-top: 0;
-        margin-bottom: 60px;
-        text-align: center;
-        color: #FFFFFF;
-      }
-      .submit{
-        margin-top: 30px;
-        width: 100%;
-      }
-  }
+
+<style lang="less" scoped>
+.login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    .Login_left{
+        width: 50%;
+        height: 100%;
+        background: white;
+    }
+    .Login_right{
+        width: 50%;
+        height: 100%;
+        background: rgb(239, 239, 239);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .content{
+            height: 500px;
+            width: 400px;
+            // background: red;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+            .submit{
+              width: 100%;
+            }
+        }
+    }
 }
+
 </style>

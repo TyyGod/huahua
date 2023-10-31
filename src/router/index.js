@@ -45,7 +45,7 @@ export const constantRoutes = [
     meta: {
       title: '登录'
     },
-    component: () => import('@/views/Login'),
+    component: () => import('@/views/Login/login.vue'),
     hidden: true
   },
   {
@@ -149,6 +149,15 @@ export const constantRoutes = [
         hidden: true,
         meta: {
           title: '文档手册'
+        }
+      },
+      {
+        path: 'search',
+        name: 'search',
+        component: () => import('@/views/Home/AllSearch.vue'),
+        hidden: true,
+        meta: {
+          title: '搜索'
         }
       }
     ]

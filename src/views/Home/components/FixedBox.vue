@@ -3,23 +3,25 @@
     <div class="fixedBox">
     <div class="fixedBox_content">
         <el-tooltip class="tooltip" placement="left" effect="light"  :open-delay='800' :disabled='disabled'>
-          <div class="tcont" slot='content'><span class="title">{{ToolTitle ? ToolTitle : ''}} </span><br><span class="content">{{ToolContent}}</span></div>
+          <div class="tcont" @click="skipSupport" slot='content'><span class="title">{{ToolTitle ? ToolTitle : ''}} </span><br><span class="content">{{ToolContent}}</span></div>
       <div class="top">
            <slot name="top"  />
       </div>
         </el-tooltip>
       <div class="line" />
         <el-tooltip placement="left" effect="light" :open-delay='800' :disabled='disabled'>
-            <div class="tcont" slot="content"><span class="title">{{ToolTitle2 ? ToolTitle2 : ''}} </span><br><span class="content">{{ToolContent2}}</span></div>
+            <div class="tcont" slot="content" @click="Infomessage"><span class="title">{{ToolTitle2 ? ToolTitle2 : ''}} </span><br><span class="content">{{ToolContent2}}</span></div>
       <div class="bottom">
         <slot name="bottom" />
       </div>
         </el-tooltip>
     </div>
   </div>
-  <div class="backtop"  v-if="backTop" @click="backToTop">
-      <slot name="backtop" />
-  </div>
+    <transition name="el-fade-in-linear">
+      <div class="backtop"  v-show="backTop" @click="backToTop">
+        <slot name="backtop" />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -69,6 +71,15 @@ export default {
   methods: {
     backToTop: function() {
       document.body.scrollTop = document.documentElement.scrollTop = 0
+    },
+    skipSupport: function() {
+      this.$router.push('/home/support')
+    },
+    Infomessage() {
+      this.$message({
+        message: '正在建设中...',
+        type: 'warning'
+      })
     }
   }
 }
@@ -76,9 +87,15 @@ export default {
 
 <style lang="less" scoped>
 .tooltip{
-  border:none
+
+}
+.el-tooltip__popper{
+  .is-light{
+    border: none;
+  }
 }
 .tcont{
+  cursor: pointer;
   padding: 5px 45px 5px 15px;
   .title{
     font-size: 13px;
@@ -97,12 +114,11 @@ export default {
     width: 50px;
     border-radius: 50%;
     background-color: white;
-    border: 2px solid #a8a8a8;
+    box-shadow: 0px 2px 1px 1.5px #d0d3d1;
     right: 1.5%;
     text-align: center;
     line-height: 50px;
     font-size: 12px;
-    animation: fadein 3s;
 }
 .fixedBox{
     position:fixed;
@@ -110,7 +126,7 @@ export default {
     right: 1.5%;
     height: 150px;
     width: 50px;
-    border: 2px solid #a8a8a8;
+     box-shadow: 0px 2px 1px 1.5px #d0d3d1;
     border-top-color: 1px white;
     border-radius: 50px;
     z-index: 5;
