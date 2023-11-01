@@ -139,7 +139,7 @@ export const constantRoutes = [
         component: () => import('@/views/Home/Coal.vue'),
         hidden: true,
         meta: {
-          title: '煤炭行业云'
+          title: '关于我们'
         }
       },
       {

@@ -5,7 +5,7 @@
         <div class="logo" @click="tohome">
           <h3>logo</h3>
         </div>
-        <div class="menu" v-show="isShowMenu">
+        <div v-show="isShowMenu" class="menu">
           <el-menu
             :default-active="activeIndex"
             class="el-menu-demo"
@@ -15,7 +15,7 @@
             router
             @select="handleSelect"
           >
-            <el-menu-item index="/home/act" >首页</el-menu-item>
+            <el-menu-item index="/home/act">首页</el-menu-item>
             <el-menu-item id="parent2" index="/home/capability">产品服务</el-menu-item>
 
             <el-menu-item id="parent" index="/home/solution">解决方案</el-menu-item>
@@ -26,26 +26,26 @@
             <el-menu-item index="/home/coal">关于我们</el-menu-item>
           </el-menu>
         </div>
-        <div class="Dtmenu" v-show="!isShowMenu" >
-          <el-menu  class="el-menu-demo"  mode="horizontal">
-            <el-menu-item >首页</el-menu-item>
-            <el-menu-item >产品服务</el-menu-item>
-            <el-menu-item >解决方案</el-menu-item>
-            <el-menu-item >应用服务市场</el-menu-item>
-            <el-menu-item >生态合作</el-menu-item>
-            <el-menu-item >服务支持</el-menu-item>
-            <el-menu-item >行业专题</el-menu-item>
-            <el-menu-item >关于我们</el-menu-item>
+        <div v-show="!isShowMenu" class="Dtmenu">
+          <el-menu class="el-menu-demo" mode="horizontal">
+            <el-menu-item>首页</el-menu-item>
+            <el-menu-item>产品服务</el-menu-item>
+            <el-menu-item>解决方案</el-menu-item>
+            <el-menu-item>应用服务市场</el-menu-item>
+            <el-menu-item>生态合作</el-menu-item>
+            <el-menu-item>服务支持</el-menu-item>
+            <el-menu-item>行业专题</el-menu-item>
+            <el-menu-item>关于我们</el-menu-item>
           </el-menu>
         </div>
-        <div class="main" >
-          <span @click="showSearchBox">  <svg t="1697177824579" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4113" width="200" height="200"><path d="M862.609 816.955L726.44 680.785l-0.059-0.056a358.907 358.907 0 0 0 56.43-91.927c18.824-44.507 28.369-91.767 28.369-140.467 0-48.701-9.545-95.96-28.369-140.467-18.176-42.973-44.19-81.56-77.319-114.689-33.13-33.129-71.717-59.144-114.69-77.32-44.507-18.825-91.767-28.37-140.467-28.37-48.701 0-95.96 9.545-140.467 28.37-42.973 18.176-81.56 44.19-114.689 77.32-33.13 33.129-59.144 71.717-77.32 114.689-18.825 44.507-28.37 91.767-28.37 140.467 0 48.7 9.545 95.96 28.37 140.467 18.176 42.974 44.19 81.561 77.32 114.69 33.129 33.129 71.717 59.144 114.689 77.319 44.507 18.824 91.767 28.369 140.467 28.369 48.7 0 95.96-9.545 140.467-28.369 32.78-13.864 62.997-32.303 90.197-54.968 0.063 0.064 0.122 0.132 0.186 0.195l136.169 136.17c6.25 6.25 14.438 9.373 22.628 9.373 8.188 0 16.38-3.125 22.627-9.372 12.496-12.496 12.496-32.758 0-45.254z m-412.274-69.466c-79.907 0-155.031-31.118-211.534-87.62-56.503-56.503-87.62-131.627-87.62-211.534s31.117-155.031 87.62-211.534c56.502-56.503 131.626-87.62 211.534-87.62s155.031 31.117 211.534 87.62c56.502 56.502 87.62 131.626 87.62 211.534s-31.118 155.031-87.62 211.534c-56.503 56.502-131.627 87.62-211.534 87.62z" fill="#ac2807" p-id="4114"></path></svg></span>
+        <div class="main">
+          <span @click="showSearchBox">  <svg t="1697177824579" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4113" width="200" height="200"><path d="M862.609 816.955L726.44 680.785l-0.059-0.056a358.907 358.907 0 0 0 56.43-91.927c18.824-44.507 28.369-91.767 28.369-140.467 0-48.701-9.545-95.96-28.369-140.467-18.176-42.973-44.19-81.56-77.319-114.689-33.13-33.129-71.717-59.144-114.69-77.32-44.507-18.825-91.767-28.37-140.467-28.37-48.701 0-95.96 9.545-140.467 28.37-42.973 18.176-81.56 44.19-114.689 77.32-33.13 33.129-59.144 71.717-77.32 114.689-18.825 44.507-28.37 91.767-28.37 140.467 0 48.7 9.545 95.96 28.37 140.467 18.176 42.974 44.19 81.561 77.32 114.69 33.129 33.129 71.717 59.144 114.689 77.319 44.507 18.824 91.767 28.369 140.467 28.369 48.7 0 95.96-9.545 140.467-28.369 32.78-13.864 62.997-32.303 90.197-54.968 0.063 0.064 0.122 0.132 0.186 0.195l136.169 136.17c6.25 6.25 14.438 9.373 22.628 9.373 8.188 0 16.38-3.125 22.627-9.372 12.496-12.496 12.496-32.758 0-45.254z m-412.274-69.466c-79.907 0-155.031-31.118-211.534-87.62-56.503-56.503-87.62-131.627-87.62-211.534s31.117-155.031 87.62-211.534c56.502-56.503 131.626-87.62 211.534-87.62s155.031 31.117 211.534 87.62c56.502 56.502 87.62 131.626 87.62 211.534s-31.118 155.031-87.62 211.534c-56.503 56.502-131.627 87.62-211.534 87.62z" fill="#ac2807" p-id="4114" /></svg></span>
           <span @click="skipDocument"> 文档 </span>
           <span>备案</span>
           <span @click="skipControlPanel"> 控制台 </span>
           <span>登录</span>
           <span>免费注册</span>
-          <span></span>
+          <span />
         </div>
       </el-header>
       <el-main>
@@ -66,19 +66,18 @@
       <DBV :drawer-data="drawerData" />
     </el-drawer>
     <!-- 搜索框 -->
-     <transition name="el-zoom-in-top">
-       <div class="Zzc" @click.self="closeSearbox" v-show="searchBox">
-        <div class="searchBox" v-show="searchBox">
-        <div class="content">
-          <div class="top">
-            <MySearch @closeSb="getSbValue" />
-          </div>
-          <div class="bottom">
+    <transition name="el-zoom-in-top">
+      <div v-show="searchBox" class="Zzc" @click.self="closeSearbox">
+        <div v-show="searchBox" class="searchBox">
+          <div class="content">
+            <div class="top">
+              <MySearch @closeSb="getSbValue" />
+            </div>
+            <div class="bottom" />
           </div>
         </div>
-       </div>
-       </div>
-     </transition>
+      </div>
+    </transition>
   </main>
 
 </template>
