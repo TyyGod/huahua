@@ -82,10 +82,18 @@ export const constantRoutes = [
       {
         path: 'capability',
         name: 'capability',
-        component: () => import('@/views/Home/Capability.vue'),
+        component: () => import('@/views/Home/Capability/Capability.vue'),
         hidden: true,
         meta: {
           title: '产品能力'
+        }
+      },
+      {
+        path: 'ecs',
+        name: 'ecs',
+        component: () => import('@/views/Home/Capability/ecs.vue'),
+        meta: {
+          title: '弹性云服务'
         }
       },
       {
