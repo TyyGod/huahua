@@ -230,6 +230,91 @@ export default {
 </script>
 
 <style lang='less' scoped>
+@media screen and (max-width:1300px) {
+  .main {
+  min-width: 350px;
+  flex-grow: 3;
+  text-align: center;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  line-height: 70px;
+  font-size: 14px;
+  color: black;
+  span:nth-child(1){
+    margin-top: 5px;
+  }
+  span:nth-child(2) {
+    margin-left: 15px;
+  }
+  span:nth-child(3) {
+    margin-left: 15px;
+  }
+  span:nth-child(4) {
+    margin-left: 15px;
+  }
+  span:nth-child(5) {
+    margin-left: 15px;
+  }
+  span:nth-child(6) {
+    display: inline-block;
+    height: 70px;
+    width: 80px;
+    right: 0px;
+    position: absolute;
+    background: #17A6FA;
+    color: white;
+  }
+  span:hover {
+    cursor: pointer;
+  }
+}
+}
+@media screen and (min-width:1300px) {
+  .main {
+  min-width: 450px;
+  flex-grow: 3;
+  text-align: center;
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  line-height: 70px;
+  font-size: 14px;
+  color: black;
+  span:nth-child(1){
+    margin-top: 5px;
+  }
+  span:nth-child(2) {
+    margin-left: 30px;
+  }
+  span:nth-child(3) {
+    margin-left: 30px;
+  }
+  span:nth-child(4) {
+    margin-left: 30px;
+  }
+  span:nth-child(5) {
+    margin-left: 30px;
+  }
+  span:nth-child(6) {
+    display: inline-block;
+    height: 70px;
+    width: 100px;
+    right: 0px;
+    position: absolute;
+    background: #17A6FA;
+    color: white;
+  }
+   span:nth-child(7) {
+    height: 70px;
+    width: 10px;
+    // background: red;
+  }
+  span:hover {
+    cursor: pointer;
+  }
+}
+}
 :deep .el-menu-item{
   background: transparent  !important;
 }
@@ -274,49 +359,6 @@ export default {
   opacity: 0;
    text-align: center;
    line-height: 50%;
-}
-.main {
-  min-width: 500px;
-  flex-grow: 3;
-  text-align: center;
-  display: flex;
-  // align-items: center;
-  justify-content: center;
-  line-height: 70px;
-  font-size: 14px;
-  color: black;
-  span:nth-child(1){
-    margin-top: 5px;
-  }
-  span:nth-child(2) {
-    margin-left: 30px;
-  }
-  span:nth-child(3) {
-    margin-left: 30px;
-  }
-  span:nth-child(4) {
-    margin-left: 30px;
-  }
-  span:nth-child(5) {
-    margin-left: 30px;
-  }
-  span:nth-child(6) {
-    display: inline-block;
-    height: 70px;
-    width: 100px;
-    right: 0px;
-    position: absolute;
-    background: #17A6FA;
-    color: white;
-  }
-   span:nth-child(7) {
-    height: 70px;
-    width: 10px;
-    // background: red;
-  }
-  span:hover {
-    cursor: pointer;
-  }
 }
 .el-menu {
   padding-left: 8%;

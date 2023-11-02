@@ -187,7 +187,7 @@ export default {
       ele.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
-        inline: 'start'
+        inline: 'nearest'
       })
     }
   }
