@@ -12,8 +12,9 @@ import ElementUI from 'element-ui'
 import '@/assets/css/element-variables.scss'
 
 // 全局样式
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import '@/assets/css/global.scss'
-
+import 'swiper/dist/css/swiper.css'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -45,6 +46,7 @@ EventBus.getInstance().emit('changePrice', 100, 200)
 Vue.prototype.$EventBus = new Vue()
 
 // 设置 ElementUI
+Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI, { size: 'small' })
 // 如果想要 设置语言，按照，如下方式声明
 // import locale from 'element-ui/lib/locale/lang/en' // lang i18n

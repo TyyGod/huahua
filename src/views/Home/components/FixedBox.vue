@@ -86,6 +86,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/.icon{
+  height: 1.9em !important;
+  width: 1.9em !important;
+  float: none !important;
+}
 .tooltip{
 
 }

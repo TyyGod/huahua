@@ -8,10 +8,8 @@
         <div class="menu" v-show="isShowMenu">
           <el-menu
             :default-active="activeIndex"
-            class="el-menu-demo"
             mode="horizontal"
             active-text-color="#AC2807"
-            background-color="#F6F9FB"
             router
             @select="handleSelect"
           >
@@ -232,6 +230,9 @@ export default {
 </script>
 
 <style lang='less' scoped>
+:deep .el-menu-item{
+  background: transparent  !important;
+}
 .el-main{
   padding: 10px 0px 20px 0px;
 }
@@ -255,6 +256,7 @@ export default {
   /* justify-content: space-around; */
 }
 .logo {
+  min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,7 +266,6 @@ export default {
 }
 .menu {
   flex-grow: 3;
-  // background: blue;
   text-align: center;
   line-height: 50%;
 }
@@ -275,6 +276,7 @@ export default {
    line-height: 50%;
 }
 .main {
+  min-width: 500px;
   flex-grow: 3;
   text-align: center;
   display: flex;
@@ -318,6 +320,7 @@ export default {
 }
 .el-menu {
   padding-left: 8%;
+  background:#f6f6f6;
 }
 .el-menu.el-menu--horizontal {
   border-bottom: 0px;
