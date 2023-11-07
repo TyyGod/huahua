@@ -40,15 +40,27 @@
        </div>
       </div>
       <div class="bottom">
-        <div class="left">
+        <div :class="leftIsFixed === true ? 'leftFixed' : 'left' " id="left">
           <div v-for="i in data" :key="i.id" :class="activeTabs === i.id ? 'activeItem' : 'item' " @click="changeTabs3(i)">
             {{i.title}}
           </div>
         </div>
+        <div class="left3" v-show="leftIsFixed" id="left3">
+            <div v-for="i in data" :key="i.id" :class="activeTabs === i.id ? 'activeItem' : 'item' ">
+              {{i.title}}
+            </div>
+        </div>
         <div class="right">
           <div v-for="item in data" :key="item.id" class="item">
-              <span class="title" :id="item.id">icon {{item.title}}</span>
-              <span v-for="i in item.children" :key="i.id" class="main">{{i.title}}</span>
+              <span class="right_title" :id="item.id">
+                <svg t="1698891528536" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4052" width="200" height="200"><path d="M746.666667 725.333333c59.733333-12.8 106.666667-64 106.666666-128 0-72.533333-55.466667-128-128-128-17.066667 0-29.866667 4.266667-42.666666 8.533334V469.333333c0-93.866667-76.8-170.666667-170.666667-170.666666s-170.666667 76.8-170.666667 170.666666c0 17.066667 4.266667 29.866667 4.266667 46.933334-8.533333-4.266667-17.066667-4.266667-25.6-4.266667C260.266667 512 213.333333 558.933333 213.333333 618.666667S260.266667 725.333333 320 725.333333h426.666667z m0 85.333334h-426.666667C213.333333 810.666667 128 725.333333 128 618.666667c0-85.333333 55.466667-157.866667 128-183.466667C273.066667 311.466667 379.733333 213.333333 512 213.333333c110.933333 0 209.066667 72.533333 243.2 170.666667 102.4 12.8 183.466667 102.4 183.466667 213.333333s-85.333333 200.533333-192 213.333334z" fill="#ac2807" p-id="4053"></path></svg>
+                <span style="marginLeft:10px;">{{item.title}}</span>
+              </span>
+              <span v-for="i in item.children" :key="i.id" class="main">
+                <div class="main_cont">
+                  {{i.title}}
+                </div>
+              </span>
             </div>
         </div>
       </div>
@@ -83,6 +95,7 @@ export default {
       showBox: false,
       isTabs: true,
       activeTabs: 1,
+      leftIsFixed: false,
       data: [
         {
           id: 1,
@@ -106,6 +119,16 @@ export default {
         },
         {
           id: 3,
+          title: '大数据',
+          children: [
+            {
+              id: 1,
+              title: '大数据管理瓶体'
+            }
+          ]
+        },
+        {
+          id: 4,
           title: '大数据',
           children: [
             {
@@ -162,9 +185,26 @@ export default {
     }
   },
   mounted() {
-
+    window.addEventListener('scroll', this.handleFun)
   },
   methods: {
+    handleFun() {
+      const scrollTop = window.scrollTop || document.documentElement.scrollTop || document.body.scrollTop
+      const ele = this.leftIsFixed === false ? document.getElementById('left') : document.getElementById('left3')
+      const distanceToTop = ele.offsetTop
+      const right_title = document.getElementsByClassName('right_title')
+      for (const i of right_title) {
+        const a = i.getBoundingClientRect()
+        if (a.top < 50) {
+          this.activeTabs = i.id * 1
+        }
+      }
+      if (scrollTop > distanceToTop) {
+        this.leftIsFixed = true
+      } else {
+        this.leftIsFixed = false
+      }
+    },
     searchNow(e) {
       if (e.currentTarget.value) {
         this.showBox = true
@@ -185,23 +225,27 @@ export default {
       this.activeTabs = item.id
       const ele = document.getElementById(item.id)
       ele.scrollIntoView({
-        behavior: 'smooth',
+        behavior: 'instant',
         block: 'start',
         inline: 'nearest'
       })
     }
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleFun)
   }
 }
 </script>
 
 <style lang="less" scoped>
 .icon{
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.8em;
+  height: 1.8em;
+  margin-top: 5px;
+  float: left;
 }
 .solution{
   .banner{
-  min-width: 1500px;
   position: relative;
   width: 100%;
   height: 400px;
@@ -211,13 +255,12 @@ export default {
   }
 }
 .HotSoluton{
-  background: white;
+   background: rgb(248, 250, 252);
   height: 500px;
   width: 100%;
   .title{
     height: 15%;
     width: 100%;
-    min-width: 1300px;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -228,7 +271,6 @@ export default {
   .content{
     height: 80%;
     width: 80%;
-    min-width: 1300px;
     margin-left: 10%;
     margin-top: 20px;
     .top{
@@ -274,6 +316,7 @@ export default {
 .AllSoluton{
   width: 100%;
   min-width: 1500px;
+  background: rgb(248, 250, 252);
    .title{
     height: 50px;
     width: 100%;
@@ -283,13 +326,13 @@ export default {
     font-size: 23px;
     font-weight: bold;
     letter-spacing: 2px;
-    background: white;
+    background: rgb(248, 250, 252);
   }
   .Alltabs{
     display: flex;
     width: 100%;
     height: 56px;
-    background: white;
+    background: rgb(248, 250, 252);
     padding-top: 20px;
     .left{
       cursor: pointer;
@@ -311,13 +354,50 @@ export default {
     }
   }
   .bottom{
-      height: 90%;
+      height: 100%;
       width: 80%;
       margin-top: 50px;
       margin-left: 10%;
       .left{
         float: left;
         width: 15%;
+        min-width: 180px;
+        .item{
+          cursor: pointer;
+          padding: 18px 20px;
+          transition: background 0.2s linear;
+        }
+        .activeItem{
+          cursor: pointer;
+          padding: 18px 20px;
+          transition: background 0.2s linear;
+          background: rgb(252, 224, 217);
+          color: #ac2807;
+        }
+      }
+      .leftFixed{
+        position: fixed;
+        top: 0px;
+        float: left;
+        min-width: 184px;
+        .item{
+          cursor: pointer;
+          padding: 18px 20px;
+          transition: background 0.2s linear;
+        }
+        .activeItem{
+          cursor: pointer;
+          padding: 18px 20px;
+          transition: background 0.2s linear;
+          background: rgb(252, 224, 217);
+          color: #ac2807;
+        }
+      }
+      .left3{
+        opacity: 0;
+        float: left;
+        width: 15%;
+        min-width: 180px;
         .item{
           cursor: pointer;
           padding: 18px 20px;
@@ -332,18 +412,19 @@ export default {
         }
       }
       .right{
+        height: 80%;
         float: left;
         width: 84%;
         margin-left: 1%;
         .item{
-         margin-top: 10px;
+         margin-top: 5px;
          border-top: 2px solid #e2e5e3;
          height: 250px;
          width: 100%;
          display: flex;
          align-items: center;
          position: relative;
-         .title{
+         .right_title{
            position: absolute;
            display: block;
            height: 40px;
@@ -357,8 +438,11 @@ export default {
          .main{
            display: inline-block;
            width: 100%;
-           height: 70%;
-           background: #f1f1f1;
+           height: 75%;
+           background: white;
+           .main_cont{
+             padding: 40px 25px;
+           }
          }
         }
       }

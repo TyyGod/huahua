@@ -90,6 +90,8 @@ export default {
   height: 1.9em !important;
   width: 1.9em !important;
   float: none !important;
+  margin-top: 10px !important;
+  margin-left: 0px !important;
 }
 .tooltip{
 

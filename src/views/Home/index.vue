@@ -3,7 +3,7 @@
     <el-container class="container">
       <el-header class="home_header">
         <div class="logo" @click="tohome">
-          <h3>logo</h3>
+          <img src="./1.png" alt="">
         </div>
         <div v-show="isShowMenu" class="menu">
           <el-menu
@@ -41,9 +41,29 @@
           <span @click="skipDocument"> 文档 </span>
           <span>备案</span>
           <span @click="skipControlPanel"> 控制台 </span>
-          <span>登录</span>
-          <span>免费注册</span>
-          <span />
+          <span v-if="!isLogin">登录</span>
+          <span v-if="!isLogin">免费注册</span>
+          <span v-if="isLogin" class="islogin">
+            <img src="https://img0.baidu.com/it/u=1789354127,1705295992&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="">
+            <el-dropdown trigger="click">
+              <span class="el-dropdown-link">
+                我的<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item >
+                  <p>187****3919</p>
+                  <p> <el-tag effect="plain" @click="authentication">待实名认证</el-tag> </p>
+                </el-dropdown-item>
+                <el-dropdown-item icon="el-icon-user">个人中心</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-goods">费用中心</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-time">待支付订单</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-notebook-2">待续费产品</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-chat-line-square">未读消息</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-s-grid">工单管理</el-dropdown-item>
+                <el-dropdown-item icon="el-icon-circle-close">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+           </el-dropdown>
+          </span>
         </div>
       </el-header>
       <el-main>
@@ -71,7 +91,14 @@
             <div class="top">
               <MySearch @closeSb="getSbValue" />
             </div>
-            <div class="bottom" />
+            <div class="bottom">
+              <div class="RecentSearches">
+                1
+              </div>
+              <div class="HotSearches">
+                1
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -107,6 +134,7 @@ export default {
       drawer: false,
       searchBox: false,
       isShowMenu: true,
+      isLogin: true,
       drawerData: [
         {
           id: 1, title: '计算', cont: [{ id: 1, title: '弹性....', tid: 1 }, { id: 2, title: '镜像.....', tid: 1 }]
@@ -170,7 +198,7 @@ export default {
   },
   methods: {
     tohome() {
-      // console.log(111)
+      this.$router.push('/home/act')
     },
     lastChange(newTest) {
       this.test = newTest
@@ -223,6 +251,13 @@ export default {
     closeSearbox() {
       this.searchBox = false
       this.isShowMenu = true
+    },
+    authentication() {
+      this.$message({
+        type: 'warning', // success error warning
+        message: '正在建设中...',
+        duration: 2000
+      })
     }
   }
 }
@@ -232,45 +267,74 @@ export default {
   .el-header {
     padding: 0px;
   }
-@media screen and (max-width:1300px) {
-  .main {
-  min-width: 350px;
-  flex-grow: 4;
-  text-align: center;
-  display: flex;
-  line-height: 70px;
-  font-size: 14px;
-  color: black;
-  justify-content: flex-end;
-  span:nth-child(1){
-    margin-top: 5px;
+  .el-dropdown-menu--small{
+    .el-dropdown-menu__item{
+      padding-bottom: 5px;
+    }
   }
-  span:nth-child(2) {
-    margin-left: 15px;
+  .layout{
+    min-width: 1440px;
   }
-  span:nth-child(3) {
-    margin-left: 15px;
+  .el-tag--plain{
+    border-color: rgb(64, 158, 255);
+    color: rgb(64, 158, 255);
   }
-  span:nth-child(4) {
-    margin-left: 15px;
+  .el-dropdown-menu__item:not(.is-disabled):hover, .el-dropdown-menu__item:focus{
+    background: rgba(255, 255, 255, 0.466);
+    color: black;
   }
-  span:nth-child(5) {
-    margin-left: 15px;
-  }
-  span:nth-child(6) {
-    display: inline-block;
-    height: 70px;
-    width: 80px;
-    margin-left: 15px;
-    background: #17A6FA;
-    color: white;
-  }
-  span:hover {
-    cursor: pointer;
-  }
-}
-}
-@media screen and (min-width:1300px) {
+// @media screen and (max-width:1300px) {
+//   .main {
+//   min-width: 350px;
+//   flex-grow: 4;
+//   text-align: center;
+//   display: flex;
+//   line-height: 70px;
+//   font-size: 14px;
+//   color: black;
+//   justify-content: flex-end;
+//   span:nth-child(1){
+//     margin-top: 5px;
+//   }
+//   span:nth-child(2) {
+//     margin-left: 15px;
+//   }
+//   span:nth-child(3) {
+//     margin-left: 15px;
+//   }
+//   span:nth-child(4) {
+//     margin-left: 15px;
+//   }
+//   span:nth-child(5) {
+//     margin-left: 15px;
+//   }
+//   span:nth-child(6) {
+//     display: inline-block;
+//     height: 70px;
+//     width: 80px;
+//     margin-left: 15px;
+//     background: #17A6FA;
+//     color: white;
+//   }
+//   .islogin{
+//     height: 70px;
+//     // background: red;
+//     width: 150px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+//     img{
+//       height: 40px;
+//       width: 40px;
+//       border-radius: 50%;
+//     }
+//   }
+//   span:hover {
+//     cursor: pointer;
+//   }
+// }
+// }
+
   .main {
   min-width: 450px;
   flex-grow: 3;
@@ -303,16 +367,30 @@ export default {
     color: white;
     margin-left: 35px;
   }
+  .islogin{
+    height: 70px;
+    // background: red;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 20px;
+    img{
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+    }
+  }
   span:hover {
     cursor: pointer;
   }
-}
 }
 :deep .el-menu-item{
   background: transparent  !important;
 }
 .el-main{
   padding: 10px 0px 20px 0px;
+  // background: white;
 }
  .icon{
     width: 1.6em;
@@ -331,16 +409,16 @@ export default {
 }
 .home_header {
   display: flex;
-  /* justify-content: space-around; */
 }
 .logo {
-  min-width: 120px;
+  min-width: 180px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background: red;
-  flex-grow: 1;
+  cursor: pointer;
+  img{
+    margin-top: -5px;
+    min-width: 180px;
+    height: 130%;
+  }
 }
 .menu {
   flex-grow: 3;
@@ -354,7 +432,7 @@ export default {
    line-height: 50%;
 }
 .el-menu {
-  padding-left: 5%;
+  padding-left: 0%;
   background:#f6f6f6;
 }
 .el-menu.el-menu--horizontal {
@@ -411,6 +489,15 @@ export default {
     width: 100%;
     height: 80%;
     margin-top: 20px;
+    background: red;
+    .RecentSearches{
+      height: 20%;
+      width: 100%;
+    }
+    .HotSearches{
+      height: 80%;
+      width: 100%;
+    }
   }
   }
 }
